@@ -1,0 +1,14 @@
+{
+  "m": 4,
+  "alphabet_bits": 2,
+  "vocabulary_size": 4,
+  "output_size": 2,
+  "q": 8,
+  "domain_size": 256,
+  "image_size": 256,
+  "injective": true,
+  "printed_rhs_bits": 0.0,
+  "uniform_label_counts": [1024, 1024],
+  "best_uniform_constant_success": 0.5,
+  "returncode": 0
+}

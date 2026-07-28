@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "historical_judged_baseline",
+  "stage": "claim_1_theorem_calibration",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -32,14 +32,14 @@
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
     "estimated_scientific_cores": 1,
-    "runtime_class": "uncertain because the locked environment is installed on the first run",
-    "backend": "hf",
-    "flavor": "cpu-upgrade",
-    "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
-    "timeout": "1h"
+    "runtime_class": "single-core exhaustive certificate expected under 5 minutes",
+    "backend": "local",
+    "flavor": "local CPU",
+    "image": "repository uv environment",
+    "timeout": "not applicable"
   },
   "claims": [
-    {"id": 1, "verdict": "BLOCKED", "reason": "Historical artifact has no proof certificate, executable verifier, raw evidence, checker, or control."},
+    {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},
     {"id": 2, "verdict": "BLOCKED", "reason": "Historical artifact reports 28/30 witnesses without exposing cases or a checker."},
     {"id": 3, "verdict": "BLOCKED", "reason": "Historical artifact reports 100% without construction code, domain audit, or raw results."},
     {"id": 4, "verdict": "BLOCKED", "reason": "Historical artifact reports >=99% without construction code, distribution audit, or raw results."},

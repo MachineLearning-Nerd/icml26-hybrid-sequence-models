@@ -99,6 +99,28 @@ def verify_campaign(campaign: dict) -> dict:
     }
 
 
+def run_claim_verifier(claim_id: int) -> dict:
+    verifier = ROOT / "reproduction" / f"claim{claim_id}_verifier.py"
+    if not verifier.is_file():
+        raise VerificationError(f"missing verifier for non-BLOCKED claim {claim_id}")
+    completed = subprocess.run(
+        [sys.executable, str(verifier)],
+        cwd=ROOT,
+        check=False,
+        text=True,
+        capture_output=True,
+    )
+    if completed.returncode != 0:
+        raise VerificationError(
+            f"claim {claim_id} verifier failed ({completed.returncode}): "
+            f"{completed.stderr.strip()}"
+        )
+    try:
+        return json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        raise VerificationError(f"claim {claim_id} verifier emitted invalid JSON") from exc
+
+
 def negative_control() -> int:
     rows = parse_manifest(JUDGED_MANIFEST)
     corrupted = list(rows)
@@ -124,6 +146,11 @@ def main() -> int:
     started = time.perf_counter()
     campaign = json.loads(CAMPAIGN_PATH.read_text(encoding="utf-8"))
     result = verify_campaign(campaign)
+    claim_results = {
+        str(claim["id"]): run_claim_verifier(claim["id"])
+        for claim in campaign["claims"]
+        if claim["verdict"] != "BLOCKED"
+    }
 
     control = subprocess.run(
         [sys.executable, str(Path(__file__).resolve()), "--negative-control"],
@@ -164,6 +191,7 @@ def main() -> int:
         "official_code": campaign["official_code"],
         "judged_space": campaign["judged_space"],
         "checks": result,
+        "claim_results": claim_results,
         "negative_control": {
             "returncode": control.returncode,
             "stderr": control.stderr.strip(),
@@ -177,7 +205,17 @@ def main() -> int:
     print("=== EVAL_SUMMARY ===")
     print("Historical judged baseline audit: PASS")
     print("Protected judged score: 0/12; no score increase is claimed.")
-    print("Claims 1-6: BLOCKED at baseline because evaluator-visible evidence is absent.")
+    blocked_ids = [
+        str(claim["id"])
+        for claim in campaign["claims"]
+        if claim["verdict"] == "BLOCKED"
+    ]
+    print(f"Currently BLOCKED claims: {', '.join(blocked_ids) if blocked_ids else 'none'}")
+    for claim_id, claim_result in claim_results.items():
+        print(
+            f"Claim {claim_id}: {claim_result['verdict']} "
+            f"({claim_result['confidence']} confidence)"
+        )
     print(f"Negative control return code: {control.returncode} (nonzero expected)")
     print(f"Verifier runtime seconds: {elapsed:.6f}")
     return 0
