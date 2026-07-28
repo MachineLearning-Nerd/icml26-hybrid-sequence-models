@@ -1,0 +1,16 @@
+{
+  "control": "replace the window stack by total window R+1",
+  "length": 17,
+  "dependency_range": 8,
+  "windows": [9],
+  "total_window": 9,
+  "differing_position_zero_based": 8,
+  "shared_r_suffix": true,
+  "observations_equal": false,
+  "target_labels_differ": true,
+  "deterministic_predictor_accuracies": [0.5, 0.5],
+  "max_accuracy_on_uniform_pair": 0.5,
+  "target_threshold": 0.6666666666666666,
+  "premise_total_window_below_r": false,
+  "returncode": 5
+}

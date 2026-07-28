@@ -1,0 +1,15 @@
+{
+  "claim_id": 2,
+  "source": "Theorem 3.7 / label th Transformer lb",
+  "exact_imported_claim": "Theorem 3.7 proves that sliding-window Transformers solving the same tasks under a local-sensitivity condition require total window size scaling with the context-dependency range R.",
+  "exact_formal_statement": "If two length-L inputs agree on coordinates L-R+1 through L but have different target values, there is a distribution D under which every k-layer Transformer reaching probability 2/3 satisfies sum_i W_i >= R.",
+  "assumptions": [
+    "There are two R-local-sensitivity witnesses x and x' with a shared R-token suffix and different target labels.",
+    "The final output of a sliding-window stack with W=sum_i W_i is a deterministic function of its final W input tokens, as asserted by the paper's proof.",
+    "The hard distribution is uniform on the two witnesses."
+  ],
+  "pass_condition": "A symbolic certificate proves the universal implication and an independent checker validates the premises, accuracy bound, window partitions, and a failing control.",
+  "falsification_condition": "An assumption-satisfying model with total window below R reaches at least 2/3 on the theorem's hard distribution.",
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM"
+}
