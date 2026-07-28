@@ -1,0 +1,32 @@
+{
+  "layers": [
+    {
+      "type": "selective first-order Mamba recurrence",
+      "state_update": "h_t = (1-Delta(x_t)) h_(t-1) + Delta(x_t) code(x_t-1)",
+      "Delta": "1 iff x_t is a number token in {1,...,N}; 0 otherwise",
+      "initial_state": "bottom",
+      "reachable_states": "{bottom, code(0), ..., code(N-1)}",
+      "reachable_state_count": "N+1"
+    },
+    {
+      "type": "single-head causal sliding-window softmax attention",
+      "window": "exactly the final N tokens",
+      "query": "beta * code(h_L)",
+      "key_at_position_i": "code(L-i), the zero-based relative distance",
+      "value_at_position_i": "signed binary token code",
+      "beta": "1 + 0.5 log(max(1,N-1))",
+      "decoder": "argmax correlation with every vocabulary token code"
+    }
+  ],
+  "embedding": {
+    "token_bits": "ceil(log2 |V|)",
+    "relative_position_bits": "ceil(log2 L)",
+    "numeric_indicator_bits": 1,
+    "total_dimension": "2 ceil(log2 |V|) + 2 ceil(log2 L) + 1"
+  },
+  "correctness_margin": {
+    "matching_query_key_dot_product": "b",
+    "largest_nonmatching_dot_product": "at most b-2",
+    "target_attention_mass_lower_bound": "1/(1+(N-1)exp(-2 beta)) > 1/2"
+  }
+}

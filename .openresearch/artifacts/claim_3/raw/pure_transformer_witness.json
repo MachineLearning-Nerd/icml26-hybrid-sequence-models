@@ -1,0 +1,11 @@
+{
+  "vocabulary_size": 4,
+  "number_tokens": 2,
+  "left": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
+  "right": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0],
+  "shared_suffix": 11,
+  "left_control": 1,
+  "right_control": 2,
+  "left_target": 0,
+  "right_target": 3
+}
