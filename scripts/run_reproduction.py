@@ -15,6 +15,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 ARTIFACTS = ROOT / ".openresearch" / "artifacts"
 CAMPAIGN_PATH = ROOT / "reproduction" / "campaign.json"
 JUDGED_MANIFEST = ARTIFACTS / "project" / "judged_space_manifest.sha256"
