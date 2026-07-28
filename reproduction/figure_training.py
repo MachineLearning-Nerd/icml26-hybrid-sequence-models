@@ -522,7 +522,11 @@ def train_mkar_job(job: dict) -> dict:
 def run_mkar_parallel_jobs(jobs: list[dict], workers: int) -> list[dict]:
     results: list[dict] = []
     context = multiprocessing.get_context("spawn")
-    with ProcessPoolExecutor(max_workers=workers, mp_context=context) as executor:
+    with ProcessPoolExecutor(
+        max_workers=workers,
+        mp_context=context,
+        max_tasks_per_child=1,
+    ) as executor:
         futures = {
             executor.submit(train_mkar_job, job): job["job_id"] for job in jobs
         }

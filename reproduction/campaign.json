@@ -40,7 +40,7 @@
   },
   "empirical_stage": {
     "kind": "claim_6_mkar_parameter_frontier",
-    "max_workers": 8,
+    "max_workers": 6,
     "torch_threads_per_worker": 1,
     "learning_rates": [
       0.001,

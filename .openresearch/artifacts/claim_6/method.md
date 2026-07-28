@@ -21,7 +21,11 @@ A negative control trains the SSM-to-TF d=12 model on randomized valid-token
 labels. It must remain below 0.25 clean-target accuracy. All jobs run in
 separate spawned processes with one Torch thread each.
 
-Estimated allocation is 8 cores: eight one-thread workers. Selected compute is
-Hugging Face `cpu-upgrade`, whose current documented allocation is 8 vCPU and
-32 GB. Runtime is uncertain and expected to take multiple hours, so local
+The recovery run estimates six required cores: six one-thread workers, each
+recycled after one training job to avoid persistent PyTorch process state.
+Selected compute remains Hugging Face `cpu-upgrade`, whose current documented
+allocation is 8 vCPU and 32 GB; two vCPUs are intentionally left as process
+spawn and orchestration headroom. The preceding eight-worker attempt is
+retained as a historical stalled run and is not accepted as scientific
+evidence. Runtime is uncertain and expected to take multiple hours, so local
 execution is prohibited by the campaign compute contract.
