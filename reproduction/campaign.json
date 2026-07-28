@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "claim_4_associative_recall_construction",
+  "stage": "claim_5_cpu_fidelity_pilot",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -31,12 +31,20 @@
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
-    "estimated_scientific_cores": 1,
-    "runtime_class": "single-core exhaustive certificate expected under 5 minutes",
-    "backend": "local",
-    "flavor": "local CPU",
-    "image": "repository uv environment",
-    "timeout": "not applicable"
+    "estimated_scientific_cores": 8,
+    "runtime_class": "uncertain CPU training pilot; routed remotely even though the measured step count is small",
+    "backend": "hf",
+    "flavor": "cpu-upgrade",
+    "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
+    "timeout": "3600 seconds"
+  },
+  "empirical_stage": {
+    "kind": "claim_5_cpu_fidelity_pilot",
+    "seed": 260308859,
+    "torch_threads": 8,
+    "pilot_steps": 200,
+    "evaluation_batches": 64,
+    "learning_rate": 0.01
   },
   "claims": [
     {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},
