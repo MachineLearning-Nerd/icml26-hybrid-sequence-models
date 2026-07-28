@@ -1,0 +1,25 @@
+{
+  "layers": [
+    {
+      "type": "selective Mamba prefix decoder",
+      "update": "state <- 2*state + bit on bit tokens; carry otherwise",
+      "reachable_states": "all prefixes of length at most log2(W), totaling 2W-1"
+    },
+    {
+      "type": "two-head masked attention",
+      "head_1": "copy previous token",
+      "head_2": "copy current token",
+      "output": "(previous,current) pair at every position"
+    },
+    {
+      "type": "single-head finite-temperature sliding-window attention",
+      "key": "previous-token signed binary code",
+      "query": "decoded-word signed binary code",
+      "value": "current-token signed binary code",
+      "tie_break": "strict increasing recency bias dominated by the match gap",
+      "decoder": "argmax code correlation"
+    }
+  ],
+  "window": "K + log2(W) + 1, where K is the exact first 99% hit",
+  "embedding_dimension": "3 ceil(log2(W+2)) + 2 ceil(log2 L) + 2"
+}

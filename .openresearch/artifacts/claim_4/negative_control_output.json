@@ -1,0 +1,11 @@
+{
+  "control": "one word slot below the calibrated first hit",
+  "word_vocabulary": 2,
+  "tested_context_window": 6,
+  "success_numerator": 63,
+  "success_denominator": 64,
+  "success_probability": 0.984375,
+  "target_probability": 0.99,
+  "meets_target": false,
+  "returncode": 9
+}

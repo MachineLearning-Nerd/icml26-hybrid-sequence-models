@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "claim_3_selective_copying_construction",
+  "stage": "claim_4_associative_recall_construction",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -42,7 +42,7 @@
     {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},
     {"id": 2, "verdict": "VERIFIED", "reason": "A symbolic suffix-indistinguishability certificate and independent exhaustive checker reconstruct Theorem 3.7 under the sliding-window dependency premise used by the paper's proof."},
     {"id": 3, "verdict": "VERIFIED", "reason": "A corrected finite-temperature Mamba-state plus true N-token sliding-window attention construction is exhaustively checked on complete finite domains and certified symbolically for every input on which selective copying is defined."},
-    {"id": 4, "verdict": "BLOCKED", "reason": "Historical artifact reports >=99% without construction code, distribution audit, or raw results."},
+    {"id": 4, "verdict": "VERIFIED", "reason": "An exact first-hit window calibration, prefix-state certificate, finite-temperature two-attention construction, and exhaustive W=2 domain establish at least 99% success under the explicitly audited uniform-word distribution."},
     {"id": 5, "verdict": "BLOCKED", "reason": "Historical artifact does not include the Figure 4 parameter counts or training runs."},
     {"id": 6, "verdict": "BLOCKED", "reason": "Historical artifact explicitly deferred this training claim."}
   ]
