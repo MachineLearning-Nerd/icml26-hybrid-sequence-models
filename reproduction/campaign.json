@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "stage": "historical_judged_baseline",
+  "paper": {
+    "arxiv_id": "2603.08859",
+    "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
+    "source_url": "https://export.arxiv.org/e-print/2603.08859",
+    "retrieved_utc": "2026-07-28T17:45:09Z",
+    "html_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+    "source_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+  },
+  "official_code": {
+    "url": "https://github.com/SprocketLab/hybrid-expressivity",
+    "sha": "7beeb0de80f89eb5d75301aef8e97ee9b36ca999"
+  },
+  "judged_space": {
+    "space_id": "DineshAI/82EJxJzG6r",
+    "sha": "9449686999e15049fa1e258517852b9f2a00bda1",
+    "manifest_entries": 13
+  },
+  "verdict_dataset": {
+    "url": "https://huggingface.co/datasets/ICML-2026-agent-repro/verdicts/resolve/main/verdicts.json",
+    "sha256": "470902e334497b1f4e42c9cd8b06ce939a984567f2aa8446b9aa4fe5cfe584aa",
+    "filter": {
+      "space_id": "DineshAI/82EJxJzG6r"
+    }
+  },
+  "reference_logbook": {
+    "space_id": "agharsallah/82ejxjzg6r-logbook",
+    "audited_sha": "66eb9e56f4b07b9b825d96b12997665fde90f402"
+  },
+  "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "claims": [
+    {"id": 1, "verdict": "BLOCKED", "reason": "Historical artifact has no proof certificate, executable verifier, raw evidence, checker, or control."},
+    {"id": 2, "verdict": "BLOCKED", "reason": "Historical artifact reports 28/30 witnesses without exposing cases or a checker."},
+    {"id": 3, "verdict": "BLOCKED", "reason": "Historical artifact reports 100% without construction code, domain audit, or raw results."},
+    {"id": 4, "verdict": "BLOCKED", "reason": "Historical artifact reports >=99% without construction code, distribution audit, or raw results."},
+    {"id": 5, "verdict": "BLOCKED", "reason": "Historical artifact does not include the Figure 4 parameter counts or training runs."},
+    {"id": 6, "verdict": "BLOCKED", "reason": "Historical artifact explicitly deferred this training claim."}
+  ]
+}
+

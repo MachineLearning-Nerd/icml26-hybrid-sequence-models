@@ -1,0 +1,12 @@
+{
+  "space_id": "DineshAI/82EJxJzG6r",
+  "orid": "82EJxJzG6r",
+  "paper_title": "Expressivity-Efficiency Tradeoffs for Hybrid Sequence Models",
+  "sha": "9449686999e15049fa1e258517852b9f2a00bda1",
+  "judged_at": "2026-07-28T14:30:09+00:00",
+  "model": "zai-org/GLM-5.2",
+  "score": "0/12",
+  "overall": "The logbook consists almost entirely of a summary table with self-reported verdicts and brief assertions, with no included code, experimental configurations, training logs, or concrete numerical results. The referenced output files (verdict.json, gate.json) are not provided, making independent verification impossible.",
+  "quality": "low"
+}
+
