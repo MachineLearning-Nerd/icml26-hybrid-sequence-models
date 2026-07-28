@@ -35,7 +35,7 @@
     "runtime_class": "uncertain because the locked environment is installed on the first run",
     "backend": "hf",
     "flavor": "cpu-upgrade",
-    "image": "python:3.12",
+    "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
     "timeout": "1h"
   },
   "claims": [
