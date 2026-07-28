@@ -1,0 +1,16 @@
+{
+  "claim_id": 6,
+  "confidence": "LOW",
+  "exact_imported_claim": "On multi-key associative recall, the hybrid model reaches 60% accuracy using 6x fewer parameters than pure Transformers, which plateau near 40% accuracy on single-key associative recall (Figures 5-6).",
+  "source_split": {
+    "figure_6": "Multi-Key Associative Recall: the SSM-to-TF hybrid reaches 60% mean valid-token accuracy with 6x fewer parameters than the pure two-layer Transformer.",
+    "figure_5": "Associative Recall with Decoding: among three-layer models and the tested parameter grid, the hybrid surpasses 0.5 while no pure model surpasses 0.4."
+  },
+  "imported_wording_difference": "Figure 5 is not a single-key associative-recall task; it is associative recall with a five-bit decoded control variable.",
+  "mkar_domain": "The authors' length-100, key-length-2, vocabulary-8 generator; two-layer GPTNeoX/Mamba variants; one causal attention head; full window 100; effective Mamba state size 16; 4,000 AdamW steps.",
+  "mkar_quantifier": "Mean seq-to-seq valid-token accuracy over 11 deterministic final seeds at each point in the paper's hidden-dimension grid, after learning-rate selection on disjoint seeds.",
+  "mkar_verification_condition": "The first hybrid and pure-Transformer grid points whose mean accuracy reaches 0.60 have a pure-to-hybrid parameter ratio consistent with approximately 6, and paired/source-neighborhood results support the separation.",
+  "figure_5_verification_condition": "In a separately committed three-layer decoding-recall run over the paper's model families and parameter neighborhood, the hybrid exceeds 0.5 mean accuracy and both pure families remain at or below 0.4.",
+  "verdict": "BLOCKED",
+  "blocker": "Both faithful empirical stages and an independent static checker must complete."
+}

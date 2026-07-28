@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "claim_5_static_evidence_replay",
+  "stage": "claim_6_mkar_parameter_frontier",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -31,17 +31,45 @@
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
-    "estimated_scientific_cores": 1,
-    "runtime_class": "deterministic static replay expected below 5 minutes",
-    "backend": "local",
-    "flavor": "none",
-    "image": "project uv environment",
-    "timeout": "300 seconds"
+    "estimated_scientific_cores": 8,
+    "runtime_class": "uncertain multi-process CPU training, expected multiple hours",
+    "backend": "hf",
+    "flavor": "cpu-upgrade",
+    "image": "python:3.12",
+    "timeout": "43200 seconds"
   },
   "empirical_stage": {
-    "kind": "claim_5_static_replay",
-    "scientific_run_id": "f3855c20-ecfe-425a-bd66-624f2183921e",
-    "scientific_git_sha": "d0e944e3008518a793074cf40afd7fce0566f9c1"
+    "kind": "claim_6_mkar_parameter_frontier",
+    "max_workers": 8,
+    "torch_threads_per_worker": 1,
+    "learning_rates": [
+      0.001,
+      0.0031622776601683794,
+      0.01,
+      0.03162277660168379
+    ],
+    "calibration_seeds": [
+      260360001,
+      260360002
+    ],
+    "final_seeds": [
+      260361001,
+      260361002,
+      260361003,
+      260361004,
+      260361005,
+      260361006,
+      260361007,
+      260361008,
+      260361009,
+      260361010,
+      260361011
+    ],
+    "negative_control_seed": 260369999,
+    "calibration_steps": 1000,
+    "final_steps": 4000,
+    "calibration_evaluation_batches": 32,
+    "final_evaluation_batches": 128
   },
   "claims": [
     {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},

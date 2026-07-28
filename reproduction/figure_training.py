@@ -368,6 +368,169 @@ def run_parallel_jobs(jobs: list[dict], workers: int) -> list[dict]:
     return sorted(results, key=lambda row: row["job_id"])
 
 
+def train_mkar_job(job: dict) -> dict:
+    """Train one isolated Figure 6 multi-key associative-recall model."""
+    global _INTEROP_CONFIGURED
+    started = time.perf_counter()
+    torch.set_num_threads(int(job["torch_threads"]))
+    if not _INTEROP_CONFIGURED:
+        torch.set_num_interop_threads(1)
+        _INTEROP_CONFIGURED = True
+    seed_everything(int(job["seed"]))
+
+    task = "assoc-recall-mk"
+    sequence_length = 100
+    tokenizer = make_tokenizer(task, 8, 0)
+    model = make_model(
+        layers=list(job["layers"]),
+        hidden_size=int(job["hidden_size"]),
+        vocabulary_size=len(tokenizer),
+        state_size=int(job["state_size"]),
+        expansion=2,
+    )
+    parameter_count = count_parameters(model)
+    expected = int(job["expected_parameters"])
+    if parameter_count != expected:
+        raise RuntimeError(
+            f"{job['job_id']} parameter count {parameter_count}, expected {expected}"
+        )
+
+    steps = int(job["steps"])
+    dataset = TrainDataset(
+        tokenizer,
+        task=task,
+        sequence_length=sequence_length,
+        min_subseq_length=97,
+        max_subseq_length=98,
+        num_examples=steps,
+        batch_size=8,
+        p=0.2,
+    )
+    mask = attention_window_mask(sequence_length, 100)
+    optimizer = AdamW(
+        model.parameters(),
+        lr=float(job["learning_rate"]),
+        weight_decay=0.1,
+    )
+    scheduler = get_scheduler(
+        name="linear",
+        optimizer=optimizer,
+        num_warmup_steps=100,
+        num_training_steps=4000,
+    )
+    optimizer.zero_grad(set_to_none=True)
+    losses: list[float] = []
+    curve: list[dict] = []
+    checkpoint_losses: list[float] = []
+    random_targets = bool(job.get("random_targets", False))
+
+    for step in range(1, steps + 1):
+        batch = dataset[step - 1]
+        labels = batch["output_ids"]
+        if random_targets:
+            labels = labels.clone()
+            replacement = torch.randint(
+                low=0,
+                high=len(tokenizer),
+                size=labels.shape,
+            )
+            valid = batch["mask"].bool()
+            labels[valid] = replacement[valid]
+        logits = model(
+            batch["input_ids"],
+            attention_mask=mask,
+            return_dict=True,
+        )["logits"]
+        loss = masked_loss(labels, logits, batch["mask"])
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        optimizer.step()
+        scheduler.step()
+        optimizer.zero_grad(set_to_none=True)
+        loss_value = float(loss.detach())
+        losses.append(loss_value)
+        checkpoint_losses.append(loss_value)
+        if step % 1000 == 0 or step == steps:
+            curve.append(
+                {
+                    "step": step,
+                    "mean_loss_since_previous_checkpoint": statistics.fmean(
+                        checkpoint_losses
+                    ),
+                    "learning_rate": optimizer.param_groups[0]["lr"],
+                }
+            )
+            checkpoint_losses = []
+
+    final_evaluation = evaluate_preserving_rng(
+        model,
+        tokenizer,
+        mask,
+        task=task,
+        sequence_length=sequence_length,
+        sampled_length=97,
+        batches=int(job["final_evaluation_batches"]),
+        batch_size=8,
+        probability=0.2,
+        seed=int(job["evaluation_seed"]),
+    )
+    runtime = time.perf_counter() - started
+    output = {
+        "job_id": job["job_id"],
+        "point_id": job["point_id"],
+        "phase": job["phase"],
+        "layers": list(job["layers"]),
+        "hidden_size": int(job["hidden_size"]),
+        "effective_state_size": int(job["state_size"]),
+        "nominal_state_size": 1,
+        "parameters": parameter_count,
+        "learning_rate": float(job["learning_rate"]),
+        "seed": int(job["seed"]),
+        "evaluation_seed": int(job["evaluation_seed"]),
+        "steps": steps,
+        "random_targets": random_targets,
+        "mean_training_loss": statistics.fmean(losses),
+        "final_training_loss": losses[-1],
+        "training_curve": curve,
+        "final_evaluation": final_evaluation,
+        "runtime_seconds": runtime,
+        "torch_threads": torch.get_num_threads(),
+        "cgroup_cpu_quota": cgroup_cpu_quota(),
+        "cpu_affinity": (
+            len(os.sched_getaffinity(0))
+            if hasattr(os, "sched_getaffinity")
+            else None
+        ),
+    }
+    print(
+        "FIGURE6_JOB_COMPLETE "
+        + json.dumps(
+            {
+                "job_id": output["job_id"],
+                "parameters": parameter_count,
+                "mean_training_loss": output["mean_training_loss"],
+                "accuracy": final_evaluation["accuracy"],
+                "runtime_seconds": runtime,
+            },
+            sort_keys=True,
+        ),
+        flush=True,
+    )
+    return output
+
+
+def run_mkar_parallel_jobs(jobs: list[dict], workers: int) -> list[dict]:
+    results: list[dict] = []
+    context = multiprocessing.get_context("spawn")
+    with ProcessPoolExecutor(max_workers=workers, mp_context=context) as executor:
+        futures = {
+            executor.submit(train_mkar_job, job): job["job_id"] for job in jobs
+        }
+        for future in as_completed(futures):
+            results.append(future.result())
+    return sorted(results, key=lambda row: row["job_id"])
+
+
 def aggregate_accuracy(rows: list[dict]) -> dict:
     accuracies = [float(row["final_evaluation"]["accuracy"]) for row in rows]
     mean = statistics.fmean(accuracies)
@@ -389,6 +552,250 @@ def aggregate_accuracy(rows: list[dict]) -> dict:
         "total_valid_tokens": sum(
             int(row["final_evaluation"]["valid_tokens"]) for row in rows
         ),
+    }
+
+
+def run_claim6_mkar_frontier(config: dict) -> dict:
+    """Calibrate and reproduce the exact Figure 6 MKAR dimension sweep."""
+    started = time.perf_counter()
+    dimensions = [4, 8, 12, 16, 20, 24]
+    architectures = [
+        ("tf_tf", ["TF", "TF"], 1),
+        ("ssm_ssm", ["SSM", "SSM"], 16),
+        ("tf_ssm", ["TF", "SSM"], 16),
+        ("ssm_tf", ["SSM", "TF"], 16),
+    ]
+    expected_counts = {
+        "tf_tf": {4: 396, 8: 1304, 12: 2724, 16: 4656, 20: 7100, 24: 10056},
+        "ssm_ssm": {4: 1164, 8: 2712, 12: 4644, 16: 6960, 20: 9820, 24: 12936},
+        "tf_ssm": {4: 780, 8: 2008, 12: 3684, 16: 5808, 20: 8460, 24: 11496},
+        "ssm_tf": {4: 780, 8: 2008, 12: 3684, 16: 5808, 20: 8460, 24: 11496},
+    }
+    points = [
+        {
+            "point_id": f"{prefix}_d{dimension}",
+            "family": prefix,
+            "layers": layers,
+            "hidden_size": dimension,
+            "state_size": state_size,
+            "expected_parameters": expected_counts[prefix][dimension],
+        }
+        for prefix, layers, state_size in architectures
+        for dimension in dimensions
+    ]
+    learning_rates = [float(value) for value in config["learning_rates"]]
+    calibration_jobs = [
+        {
+            **point,
+            "job_id": (
+                f"cal_{point['point_id']}_lr{learning_rate:.10g}_s{seed}"
+            ),
+            "phase": "learning_rate_calibration",
+            "learning_rate": learning_rate,
+            "seed": int(seed),
+            "evaluation_seed": int(seed) + 100_000,
+            "steps": int(config["calibration_steps"]),
+            "final_evaluation_batches": int(
+                config["calibration_evaluation_batches"]
+            ),
+            "torch_threads": int(config["torch_threads_per_worker"]),
+        }
+        for point in points
+        for learning_rate in learning_rates
+        for seed in config["calibration_seeds"]
+    ]
+    calibration_results = run_mkar_parallel_jobs(
+        calibration_jobs, int(config["max_workers"])
+    )
+
+    selected_learning_rates: dict[str, float] = {}
+    calibration_summary: dict[str, list[dict]] = {}
+    for point in points:
+        candidates = []
+        for learning_rate in learning_rates:
+            rows = [
+                row
+                for row in calibration_results
+                if row["point_id"] == point["point_id"]
+                and row["learning_rate"] == learning_rate
+            ]
+            candidates.append(
+                {
+                    "learning_rate": learning_rate,
+                    "replicates": len(rows),
+                    "mean_training_loss": statistics.fmean(
+                        row["mean_training_loss"] for row in rows
+                    ),
+                    "mean_accuracy": statistics.fmean(
+                        row["final_evaluation"]["accuracy"] for row in rows
+                    ),
+                }
+            )
+        candidates.sort(
+            key=lambda row: (
+                -row["mean_accuracy"],
+                row["mean_training_loss"],
+                row["learning_rate"],
+            )
+        )
+        calibration_summary[point["point_id"]] = candidates
+        selected_learning_rates[point["point_id"]] = candidates[0][
+            "learning_rate"
+        ]
+
+    final_jobs = [
+        {
+            **point,
+            "job_id": f"final_{point['point_id']}_s{seed}",
+            "phase": "converged_final",
+            "learning_rate": selected_learning_rates[point["point_id"]],
+            "seed": int(seed),
+            "evaluation_seed": int(seed) + 200_000,
+            "steps": int(config["final_steps"]),
+            "final_evaluation_batches": int(config["final_evaluation_batches"]),
+            "torch_threads": int(config["torch_threads_per_worker"]),
+        }
+        for point in points
+        for seed in config["final_seeds"]
+    ]
+    final_results = run_mkar_parallel_jobs(
+        final_jobs, int(config["max_workers"])
+    )
+    point_summaries = {
+        point["point_id"]: {
+            **point,
+            "selected_learning_rate": selected_learning_rates[point["point_id"]],
+            "statistics": aggregate_accuracy(
+                [
+                    row
+                    for row in final_results
+                    if row["point_id"] == point["point_id"]
+                ]
+            ),
+        }
+        for point in points
+    }
+
+    def first_hit(family: str) -> dict | None:
+        eligible = [
+            summary
+            for summary in point_summaries.values()
+            if summary["family"] == family
+            and summary["statistics"]["mean_accuracy"] >= 0.60
+        ]
+        return (
+            min(eligible, key=lambda row: row["expected_parameters"])
+            if eligible
+            else None
+        )
+
+    first_hits = {family: first_hit(family) for family, _, _ in architectures}
+    ratio = None
+    if first_hits["ssm_tf"] and first_hits["tf_tf"]:
+        ratio = (
+            first_hits["tf_tf"]["expected_parameters"]
+            / first_hits["ssm_tf"]["expected_parameters"]
+        )
+
+    control_point = next(
+        point for point in points if point["point_id"] == "ssm_tf_d12"
+    )
+    control_job = {
+        **control_point,
+        "job_id": "control_ssm_tf_d12_random_targets",
+        "phase": "negative_control",
+        "learning_rate": selected_learning_rates["ssm_tf_d12"],
+        "seed": int(config["negative_control_seed"]),
+        "evaluation_seed": int(config["negative_control_seed"]) + 200_000,
+        "steps": int(config["final_steps"]),
+        "final_evaluation_batches": int(config["final_evaluation_batches"]),
+        "torch_threads": int(config["torch_threads_per_worker"]),
+        "random_targets": True,
+    }
+    negative_control = run_mkar_parallel_jobs(
+        [control_job], int(config["max_workers"])
+    )[0]
+    if negative_control["final_evaluation"]["accuracy"] >= 0.25:
+        raise RuntimeError("MKAR random-target control unexpectedly reached 25%")
+
+    bucket_table = {}
+    for target in (1000, 2000, 6000, 12000):
+        bucket_table[str(target)] = {}
+        for family, _, _ in architectures:
+            closest = min(
+                (
+                    summary
+                    for summary in point_summaries.values()
+                    if summary["family"] == family
+                ),
+                key=lambda row: abs(row["expected_parameters"] - target),
+            )
+            bucket_table[str(target)][family] = {
+                "point_id": closest["point_id"],
+                "parameters": closest["expected_parameters"],
+                "mean_accuracy": closest["statistics"]["mean_accuracy"],
+            }
+
+    return {
+        "stage": "claim_6_mkar_parameter_frontier",
+        "scientific_status": "PROVISIONAL_PENDING_DECODE_RECALL_AND_STATIC_CHECKER",
+        "source_contract": {
+            "task": "multi-key associative recall",
+            "sequence_length": 100,
+            "key_length": 2,
+            "vocabulary_size": 8,
+            "paper_threshold_accuracy": 0.60,
+            "paper_parameter_ratio": 6.0,
+            "paper_runs": 11,
+            "paper_table": {
+                "1000": {"tf_tf": 0.124, "ssm_ssm": 0.158, "tf_ssm": 0.131, "ssm_tf": 0.144},
+                "2000": {"tf_tf": 0.159, "ssm_ssm": 0.173, "tf_ssm": 0.183, "ssm_tf": 0.512},
+                "6000": {"tf_tf": 0.230, "ssm_ssm": 0.356, "tf_ssm": 0.286, "ssm_tf": 0.990},
+                "12000": {"tf_tf": 0.668, "ssm_ssm": 0.517, "tf_ssm": 0.524, "ssm_tf": 0.989},
+            },
+        },
+        "calibration": {
+            "selection_rule": (
+                "highest mean held-out accuracy, then lowest mean loss, "
+                "over two disjoint 1000-step calibration seeds"
+            ),
+            "learning_rates": learning_rates,
+            "summary": calibration_summary,
+            "selected": selected_learning_rates,
+            "raw_runs": calibration_results,
+        },
+        "final_runs": final_results,
+        "point_summaries": point_summaries,
+        "threshold_0_60_first_hits": first_hits,
+        "pure_tf_to_ssm_tf_first_hit_parameter_ratio": ratio,
+        "paper_bucket_nearest_points": bucket_table,
+        "negative_control": negative_control,
+        "runtime": {
+            "total_seconds": time.perf_counter() - started,
+            "max_workers": int(config["max_workers"]),
+            "torch_threads_per_worker": int(config["torch_threads_per_worker"]),
+            "estimated_scientific_cores": (
+                int(config["max_workers"])
+                * int(config["torch_threads_per_worker"])
+            ),
+            "cgroup_cpu_quota": cgroup_cpu_quota(),
+            "os_cpu_count": os.cpu_count(),
+            "cpu_affinity": (
+                len(os.sched_getaffinity(0))
+                if hasattr(os, "sched_getaffinity")
+                else None
+            ),
+            "calibration_jobs": len(calibration_jobs),
+            "final_jobs": len(final_jobs),
+            "negative_control_jobs": 1,
+        },
+        "limitations": [
+            "The effective Mamba state size is 16 because exact saved parameter counts show that the nominal sd1 CLI value was not applied.",
+            "The source records no seeds; this reproduction supplies deterministic disjoint calibration and final seeds.",
+            "Evaluation uses 1,024 held-out sequences per seed instead of the public evaluator's one batch of eight.",
+            "The first-hit ratio is restricted to the paper's precommitted hidden-dimension grid and is not an asymptotic lower bound.",
+            "This stage tests Figure 6 only; the imported Claim 6 also mislabels the distinct Figure 5 decoding-recall task and remains pending.",
+        ],
     }
 
 

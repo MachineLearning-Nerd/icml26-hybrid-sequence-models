@@ -174,6 +174,10 @@ def main() -> int:
         from reproduction.figure_training import run_claim5_frontier
 
         empirical_result = run_claim5_frontier(campaign["empirical_stage"])
+    elif empirical_kind == "claim_6_mkar_parameter_frontier":
+        from reproduction.figure_training import run_claim6_mkar_frontier
+
+        empirical_result = run_claim6_mkar_frontier(campaign["empirical_stage"])
     result = verify_campaign(campaign)
     claim_results = {
         str(claim["id"]): run_claim_verifier(claim["id"])
