@@ -1,0 +1,19 @@
+{
+  "scientific_run_id": "f3855c20-ecfe-425a-bd66-624f2183921e",
+  "scientific_git_sha": "d0e944e3008518a793074cf40afd7fce0566f9c1",
+  "fixed_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "backend": "hf",
+  "flavor": "cpu-upgrade",
+  "estimated_cores": 8,
+  "actual_cgroup_cpu_quota": 8.0,
+  "workers": 8,
+  "torch_threads_per_worker": 1,
+  "scientific_runtime_seconds": 6183.510006624972,
+  "fixed_command_runtime_seconds": 6197.443246,
+  "calibration_seeds": [260350001, 260350002],
+  "frontier_seeds": [260351001, 260351002, 260351003],
+  "headline_seeds": [260352001, 260352002, 260352003, 260352004, 260352005, 260352006, 260352007, 260352008, 260352009, 260352010, 260352011],
+  "negative_control_seed": 260359999,
+  "official_code_sha": "7beeb0de80f89eb5d75301aef8e97ee9b36ca999",
+  "paper_source_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+}

@@ -4,6 +4,11 @@ The exact source is Figure 4 and its surrounding text in
 `sections/experiments.tex`, with setup details in
 `appendix/experiment_details.tex`.
 
+Source archive SHA-256:
+`e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8`.
+The relevant source anchors are `sections/experiments.tex` lines 26–49 and
+`appendix/experiment_details.tex` lines 3–19 in the retrieved arXiv archive.
+
 The paper's table reports SSM→TF accuracy 0.999 at approximately 2,000
 parameters, while the approximately-12,000-parameter pure Transformer and
 pure SSM report 0.923 and 0.931. The caption accurately says the pure models
@@ -27,9 +32,14 @@ Source ambiguities or inconsistencies that the final contract must not hide:
    generator and Figure data identifier use five tokens, #5 through #9;
 2. no seeds are recorded;
 3. “convergence” has no numerical stopping criterion;
-4. saved run identifiers end in `sd1`, but the Figure 6 parameter counts
+4. saved run identifiers end in `sd1`, but the Figure parameter counts
    exactly imply effective state size 16 (the model default), not 1;
 5. the table's parameter buckets are rounded, so the exact claimed 6× ratio
    must be recomputed from printed model counts;
 6. the public evaluation loop uses only the first eight generated examples
    when `eval_num_batches=1`, despite an argument named `num_eval_examples=100`.
+
+The imported claim is therefore not an exact quotation of Figure 4. Its word
+"match" strengthens the paper's explicit 0.923/0.931 and "around 0.9" result
+into equality with the 0.999 hybrid. The current verdict applies to that exact
+imported contract; it does not reject the paper's actual ordering.

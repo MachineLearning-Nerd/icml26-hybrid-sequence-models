@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "claim_5_selective_copy_parameter_frontier",
+  "stage": "claim_5_static_evidence_replay",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -31,34 +31,24 @@
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
-    "estimated_scientific_cores": 8,
-    "runtime_class": "uncertain parallel CPU training sweep expected to exceed 5 minutes",
-    "backend": "hf",
-    "flavor": "cpu-upgrade",
-    "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
-    "timeout": "14400 seconds"
+    "estimated_scientific_cores": 1,
+    "runtime_class": "deterministic static replay expected below 5 minutes",
+    "backend": "local",
+    "flavor": "none",
+    "image": "project uv environment",
+    "timeout": "300 seconds"
   },
   "empirical_stage": {
-    "kind": "claim_5_selective_copy_parameter_frontier",
-    "max_workers": 8,
-    "torch_threads_per_worker": 1,
-    "learning_rates": [0.0031622776601683794, 0.01, 0.03162277660168379],
-    "calibration_seeds": [260350001, 260350002],
-    "frontier_seeds": [260351001, 260351002, 260351003],
-    "headline_seeds": [260352001, 260352002, 260352003, 260352004, 260352005, 260352006, 260352007, 260352008, 260352009, 260352010, 260352011],
-    "negative_control_seed": 260359999,
-    "calibration_steps": 1000,
-    "final_steps": 4000,
-    "calibration_evaluation_batches": 32,
-    "epoch_evaluation_batches": 32,
-    "final_evaluation_batches": 256
+    "kind": "claim_5_static_replay",
+    "scientific_run_id": "f3855c20-ecfe-425a-bd66-624f2183921e",
+    "scientific_git_sha": "d0e944e3008518a793074cf40afd7fce0566f9c1"
   },
   "claims": [
     {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},
     {"id": 2, "verdict": "VERIFIED", "reason": "A symbolic suffix-indistinguishability certificate and independent exhaustive checker reconstruct Theorem 3.7 under the sliding-window dependency premise used by the paper's proof."},
     {"id": 3, "verdict": "VERIFIED", "reason": "A corrected finite-temperature Mamba-state plus true N-token sliding-window attention construction is exhaustively checked on complete finite domains and certified symbolically for every input on which selective copying is defined."},
     {"id": 4, "verdict": "VERIFIED", "reason": "An exact first-hit window calibration, prefix-state certificate, finite-temperature two-attention construction, and exhaustive W=2 domain establish at least 99% success under the explicitly audited uniform-word distribution."},
-    {"id": 5, "verdict": "BLOCKED", "reason": "Historical artifact does not include the Figure 4 parameter counts or training runs."},
+    {"id": 5, "verdict": "FALSIFIED", "reason": "The exact imported word 'match' conflicts with the paper's own 0.999 versus 0.923/0.931 table and 'around 0.9' caption. A faithful 11-seed CPU rerun independently finds 0.999985 at 2,192 parameters versus 0.846271/0.866493 near 12k, paired exact sign-test p<0.05 for both pure models, and calibrated finite first-hit ratios 8.32x/9.61x rather than 6x."},
     {"id": 6, "verdict": "BLOCKED", "reason": "Historical artifact explicitly deferred this training claim."}
   ]
 }
