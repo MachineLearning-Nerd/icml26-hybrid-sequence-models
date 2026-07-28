@@ -31,17 +31,17 @@
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
-    "estimated_scientific_cores": 64,
+    "estimated_scientific_cores": 8,
     "runtime_class": "uncertain parallel CPU training sweep expected to exceed 5 minutes",
     "backend": "hf",
     "flavor": "cpu-upgrade",
     "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
-    "timeout": "7200 seconds"
+    "timeout": "14400 seconds"
   },
   "empirical_stage": {
     "kind": "claim_5_selective_copy_parameter_frontier",
     "max_workers": 8,
-    "torch_threads_per_worker": 8,
+    "torch_threads_per_worker": 1,
     "learning_rates": [0.0031622776601683794, 0.01, 0.03162277660168379],
     "calibration_seeds": [260350001, 260350002],
     "frontier_seeds": [260351001, 260351002, 260351003],

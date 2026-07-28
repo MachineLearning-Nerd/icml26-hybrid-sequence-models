@@ -35,6 +35,23 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def cgroup_cpu_quota() -> float | None:
+    """Return the container CPU quota, avoiding host CPU visibility."""
+    cpu_max = Path("/sys/fs/cgroup/cpu.max")
+    if cpu_max.is_file():
+        quota, period = cpu_max.read_text(encoding="utf-8").strip().split()
+        if quota != "max":
+            return int(quota) / int(period)
+    quota_path = Path("/sys/fs/cgroup/cpu/cpu.cfs_quota_us")
+    period_path = Path("/sys/fs/cgroup/cpu/cpu.cfs_period_us")
+    if quota_path.is_file() and period_path.is_file():
+        quota = int(quota_path.read_text(encoding="utf-8").strip())
+        period = int(period_path.read_text(encoding="utf-8").strip())
+        if quota > 0:
+            return quota / period
+    return None
+
+
 def parse_manifest(path: Path) -> list[tuple[str, str]]:
     rows: list[tuple[str, str]] = []
     for line_number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -186,6 +203,7 @@ def main() -> int:
         "selected_flavor": campaign["planned_compute"]["flavor"],
         "selected_image": campaign["planned_compute"]["image"],
         "selected_timeout": campaign["planned_compute"]["timeout"],
+        "actual_cgroup_cpu_quota": cgroup_cpu_quota(),
         "actual_os_cpu_count": os.cpu_count(),
         "actual_cpu_affinity": cpu_affinity,
         "platform": platform.platform(),

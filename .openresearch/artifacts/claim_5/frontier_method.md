@@ -24,9 +24,11 @@ every valid training token, then is evaluated on the real held-out task. It
 must remain below 20% accuracy. The cumulative runner also reruns Claims 1–4
 and their negative controls.
 
-Compute estimate before launch: eight spawned workers × eight Torch threads =
-64 scientific CPU threads on Hugging Face `cpu-upgrade`; runtime uncertain
-and expected above five minutes; timeout 7,200 seconds. Every worker records
-its seed, learning rate, exact parameters, runtime, Torch threads, visible
-affinity, losses, learning curve, and raw held-out counts.
-
+Compute estimate before corrected launch: eight spawned workers × one Torch
+thread = eight scientific CPU cores on Hugging Face `cpu-upgrade` (8 vCPU,
+32 GB); runtime uncertain and expected above five minutes; timeout 14,400
+seconds. The initial 8×8 launch was cancelled before any accepted result after
+the allocation audit showed that the container exposed 64 host CPUs but the
+selected flavor enforces eight vCPUs. Every worker records its seed, learning
+rate, exact parameters, runtime, Torch threads, cgroup quota, visible affinity,
+losses, learning curve, and raw held-out counts.

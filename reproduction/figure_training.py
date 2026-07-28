@@ -12,6 +12,7 @@ import random
 import statistics
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
+from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
@@ -30,6 +31,23 @@ from reproduction.upstream_hybrid_expressivity.models import (
 )
 
 _INTEROP_CONFIGURED = False
+
+
+def cgroup_cpu_quota() -> float | None:
+    """Return the enforced container CPU quota when cgroups expose it."""
+    cpu_max = Path("/sys/fs/cgroup/cpu.max")
+    if cpu_max.is_file():
+        quota, period = cpu_max.read_text(encoding="utf-8").strip().split()
+        if quota != "max":
+            return int(quota) / int(period)
+    quota_path = Path("/sys/fs/cgroup/cpu/cpu.cfs_quota_us")
+    period_path = Path("/sys/fs/cgroup/cpu/cpu.cfs_period_us")
+    if quota_path.is_file() and period_path.is_file():
+        quota = int(quota_path.read_text(encoding="utf-8").strip())
+        period = int(period_path.read_text(encoding="utf-8").strip())
+        if quota > 0:
+            return quota / period
+    return None
 
 
 def seed_everything(seed: int) -> None:
@@ -313,6 +331,7 @@ def train_selective_copy_job(job: dict) -> dict:
         "final_evaluation": final_evaluation,
         "runtime_seconds": runtime,
         "torch_threads": torch.get_num_threads(),
+        "cgroup_cpu_quota": cgroup_cpu_quota(),
         "cpu_affinity": (
             len(os.sched_getaffinity(0))
             if hasattr(os, "sched_getaffinity")
@@ -597,6 +616,7 @@ def run_claim5_frontier(config: dict) -> dict:
                 int(config["max_workers"])
                 * int(config["torch_threads_per_worker"])
             ),
+            "cgroup_cpu_quota": cgroup_cpu_quota(),
             "os_cpu_count": os.cpu_count(),
             "cpu_affinity": (
                 len(os.sched_getaffinity(0))
