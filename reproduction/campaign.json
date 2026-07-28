@@ -30,6 +30,14 @@
     "audited_sha": "66eb9e56f4b07b9b825d96b12997665fde90f402"
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "planned_compute": {
+    "estimated_scientific_cores": 1,
+    "runtime_class": "uncertain because the locked environment is installed on the first run",
+    "backend": "hf",
+    "flavor": "cpu-upgrade",
+    "image": "python:3.12",
+    "timeout": "1h"
+  },
   "claims": [
     {"id": 1, "verdict": "BLOCKED", "reason": "Historical artifact has no proof certificate, executable verifier, raw evidence, checker, or control."},
     {"id": 2, "verdict": "BLOCKED", "reason": "Historical artifact reports 28/30 witnesses without exposing cases or a checker."},
@@ -39,4 +47,3 @@
     {"id": 6, "verdict": "BLOCKED", "reason": "Historical artifact explicitly deferred this training claim."}
   ]
 }
-

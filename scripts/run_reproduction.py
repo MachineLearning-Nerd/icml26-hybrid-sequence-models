@@ -139,9 +139,14 @@ def main() -> int:
     if hasattr(os, "sched_getaffinity"):
         cpu_affinity = len(os.sched_getaffinity(0))
     runtime = {
-        "estimated_cores": 1,
-        "selected_backend": "recorded_by_orx_run",
-        "selected_flavor": "recorded_by_orx_run",
+        "estimated_scientific_cores": campaign["planned_compute"][
+            "estimated_scientific_cores"
+        ],
+        "runtime_class": campaign["planned_compute"]["runtime_class"],
+        "selected_backend": campaign["planned_compute"]["backend"],
+        "selected_flavor": campaign["planned_compute"]["flavor"],
+        "selected_image": campaign["planned_compute"]["image"],
+        "selected_timeout": campaign["planned_compute"]["timeout"],
         "actual_os_cpu_count": os.cpu_count(),
         "actual_cpu_affinity": cpu_affinity,
         "platform": platform.platform(),
@@ -184,4 +189,3 @@ if __name__ == "__main__":
     except VerificationError as exc:
         print(f"VERIFICATION_FAILED: {exc}", file=sys.stderr)
         raise SystemExit(1)
-
