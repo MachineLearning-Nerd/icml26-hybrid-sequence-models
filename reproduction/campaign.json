@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "claim_5_cpu_fidelity_pilot",
+  "stage": "claim_5_selective_copy_parameter_frontier",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -31,20 +31,27 @@
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
-    "estimated_scientific_cores": 8,
-    "runtime_class": "uncertain CPU training pilot; routed remotely even though the measured step count is small",
+    "estimated_scientific_cores": 64,
+    "runtime_class": "uncertain parallel CPU training sweep expected to exceed 5 minutes",
     "backend": "hf",
     "flavor": "cpu-upgrade",
     "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
-    "timeout": "3600 seconds"
+    "timeout": "7200 seconds"
   },
   "empirical_stage": {
-    "kind": "claim_5_cpu_fidelity_pilot",
-    "seed": 260308859,
-    "torch_threads": 8,
-    "pilot_steps": 200,
-    "evaluation_batches": 64,
-    "learning_rate": 0.01
+    "kind": "claim_5_selective_copy_parameter_frontier",
+    "max_workers": 8,
+    "torch_threads_per_worker": 8,
+    "learning_rates": [0.0031622776601683794, 0.01, 0.03162277660168379],
+    "calibration_seeds": [260350001, 260350002],
+    "frontier_seeds": [260351001, 260351002, 260351003],
+    "headline_seeds": [260352001, 260352002, 260352003, 260352004, 260352005, 260352006, 260352007, 260352008, 260352009, 260352010, 260352011],
+    "negative_control_seed": 260359999,
+    "calibration_steps": 1000,
+    "final_steps": 4000,
+    "calibration_evaluation_batches": 32,
+    "epoch_evaluation_batches": 32,
+    "final_evaluation_batches": 256
   },
   "claims": [
     {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},

@@ -148,10 +148,15 @@ def main() -> int:
     started = time.perf_counter()
     campaign = json.loads(CAMPAIGN_PATH.read_text(encoding="utf-8"))
     empirical_result = None
-    if campaign.get("empirical_stage", {}).get("kind") == "claim_5_cpu_fidelity_pilot":
+    empirical_kind = campaign.get("empirical_stage", {}).get("kind")
+    if empirical_kind == "claim_5_cpu_fidelity_pilot":
         from reproduction.figure_training import run_cpu_fidelity_pilot
 
         empirical_result = run_cpu_fidelity_pilot(campaign["empirical_stage"])
+    elif empirical_kind == "claim_5_selective_copy_parameter_frontier":
+        from reproduction.figure_training import run_claim5_frontier
+
+        empirical_result = run_claim5_frontier(campaign["empirical_stage"])
     result = verify_campaign(campaign)
     claim_results = {
         str(claim["id"]): run_claim_verifier(claim["id"])
