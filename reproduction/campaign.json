@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "stage": "claim_6_mkar_parameter_frontier",
+  "stage": "claim_6_static_evidence",
   "paper": {
     "arxiv_id": "2603.08859",
     "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
@@ -31,45 +31,15 @@
   },
   "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
   "planned_compute": {
-    "estimated_scientific_cores": 8,
-    "runtime_class": "uncertain multi-process CPU training, expected multiple hours",
-    "backend": "hf",
-    "flavor": "cpu-upgrade",
-    "image": "python:3.12",
-    "timeout": "43200 seconds"
+    "estimated_scientific_cores": 1,
+    "runtime_class": "static evidence replay expected under five minutes",
+    "backend": "local",
+    "flavor": "local CPU",
+    "image": "repository-level uv .venv with frozen lock",
+    "timeout": "300 seconds"
   },
   "empirical_stage": {
-    "kind": "claim_6_mkar_parameter_frontier",
-    "max_workers": 6,
-    "torch_threads_per_worker": 1,
-    "learning_rates": [
-      0.001,
-      0.0031622776601683794,
-      0.01,
-      0.03162277660168379
-    ],
-    "calibration_seeds": [
-      260360001,
-      260360002
-    ],
-    "final_seeds": [
-      260361001,
-      260361002,
-      260361003,
-      260361004,
-      260361005,
-      260361006,
-      260361007,
-      260361008,
-      260361009,
-      260361010,
-      260361011
-    ],
-    "negative_control_seed": 260369999,
-    "calibration_steps": 1000,
-    "final_steps": 4000,
-    "calibration_evaluation_batches": 32,
-    "final_evaluation_batches": 128
+    "kind": "claim_6_static_evidence"
   },
   "claims": [
     {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},
@@ -77,6 +47,6 @@
     {"id": 3, "verdict": "VERIFIED", "reason": "A corrected finite-temperature Mamba-state plus true N-token sliding-window attention construction is exhaustively checked on complete finite domains and certified symbolically for every input on which selective copying is defined."},
     {"id": 4, "verdict": "VERIFIED", "reason": "An exact first-hit window calibration, prefix-state certificate, finite-temperature two-attention construction, and exhaustive W=2 domain establish at least 99% success under the explicitly audited uniform-word distribution."},
     {"id": 5, "verdict": "FALSIFIED", "reason": "The exact imported word 'match' conflicts with the paper's own 0.999 versus 0.923/0.931 table and 'around 0.9' caption. A faithful 11-seed CPU rerun independently finds 0.999985 at 2,192 parameters versus 0.846271/0.866493 near 12k, paired exact sign-test p<0.05 for both pure models, and calibrated finite first-hit ratios 8.32x/9.61x rather than 6x."},
-    {"id": 6, "verdict": "BLOCKED", "reason": "Historical artifact explicitly deferred this training claim."}
+    {"id": 6, "verdict": "FALSIFIED", "reason": "The exact imported composite misidentifies Figure 5 as single-key recall, whereas the source task is five-bit decoding recall. Independently, a faithful complete Figure 6 grid rerun over 11 seeds found first 60%-mean hits at 3,684 hybrid versus 7,100 pure-Transformer parameters, a 1.93x ratio rather than 6x; the randomized-target control remained at 0.0."}
   ]
 }

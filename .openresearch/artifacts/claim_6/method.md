@@ -29,3 +29,19 @@ spawn and orchestration headroom. The preceding eight-worker attempt is
 retained as a historical stalled run and is not accepted as scientific
 evidence. Runtime is uncertain and expected to take multiple hours, so local
 execution is prohibited by the campaign compute contract.
+
+## Accepted run and static replay
+
+The accepted run used Git SHA
+`133ddebd7a6888bde8abe4e511e09a966a506828`, Hugging Face
+`cpu-upgrade`, and image
+`ghcr.io/astral-sh/uv:python3.12-bookworm-slim`. The cgroup exposed 8.0 CPUs;
+the experiment used six one-thread workers and took 14,432.196 seconds
+(4 h 00 min 32 s). It completed 192 calibration jobs, 264 final jobs, and one
+random-target control.
+
+The static checker does not trust stored aggregates. It validates the complete
+paper table transcription, instantiates all 24 models to recompute trainable
+parameter counts, checks token accuracies from integer counts, rebuilds every
+11-seed mean and interval, and recomputes the two first-hit points and their
+ratio. A mutation that changes only the stored ratio to 6.0 must exit nonzero.

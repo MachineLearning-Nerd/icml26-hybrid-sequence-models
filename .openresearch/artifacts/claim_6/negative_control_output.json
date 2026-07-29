@@ -1,0 +1,8 @@
+{
+  "returncode": 4,
+  "output": {
+    "mutation": "reported first-hit ratio changed to 6.0",
+    "reason": "first-hit ratio changed",
+    "status": "EXPECTED_FAILURE"
+  }
+}

@@ -42,5 +42,20 @@ the last occurrence of that decoded word. Figure 5 uses three-layer models
 with hidden dimensions 24 through 768. Its claim is that the hybrid is the
 only tested architecture to exceed 0.5, while no pure model exceeds 0.4.
 
-The two figures are separate claim contracts and will be run in separate
-experiment nodes. Their results must not be conflated.
+The two figures are separate claim contracts. Their results must not be
+conflated.
+
+## Source-to-verdict resolution
+
+The complete Figure 6 contract was rerun at all 24 architecture-width points
+and 11 final seeds per point. The first mean-accuracy threshold crossings were
+3,684 parameters for SSM-to-TF (0.672583 mean; normal across-seed 95% interval
+0.452239--0.892928) and 7,100 parameters for pure TF (0.752170 mean; interval
+0.682745--0.821596). The independently recomputed ratio is 1.927253, not 6.
+
+Figure 5's full dimensions 24 through 768 would require three-layer CPU
+training at widths 384 and 768. That stage was not run because it is not
+feasible within the CPU-only campaign budget. A smaller-width run would be a
+proxy and is therefore not used. The exact imported composite is nevertheless
+FALSIFIED because its Figure 5 task label contradicts the source and its
+Figure 6 numerical ratio contradicts the faithful complete-grid rerun.
