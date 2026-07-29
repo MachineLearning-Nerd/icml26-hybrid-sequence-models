@@ -1,0 +1,213 @@
+{
+  "claim": 5,
+  "confidence": "MEDIUM",
+  "exact_imported_contract": "Approximately-2k hybrid is perfect and approximately-12k pure models match it, constituting an exact 6x gap.",
+  "finite_frontier_route": {
+    "first_hits": {
+      "ssm_ssm": {
+        "parameters": 21056,
+        "point_id": "ssm_ssm_d32"
+      },
+      "ssm_tf": {
+        "parameters": 2192,
+        "point_id": "ssm_tf_d8"
+      },
+      "tf_tf": {
+        "parameters": 18240,
+        "point_id": "tf_tf_d32"
+      }
+    },
+    "ratios_relative_to_hybrid": {
+      "pure_ssm": 9.605839416058394,
+      "pure_tf": 8.321167883211679
+    },
+    "scope": "first hits in the precommitted calibrated width grid",
+    "threshold": 0.9
+  },
+  "independent_replay_route": {
+    "hybrid_2192": {
+      "accuracies": [
+        1.0,
+        1.0,
+        0.9999945207581079,
+        1.0,
+        0.9999835602926268,
+        1.0,
+        0.9999945208481728,
+        1.0,
+        0.9999451859566421,
+        0.9999232245681382,
+        0.9999945144462059
+      ],
+      "maximum": 1.0,
+      "mean_accuracy": 0.9999850478972632,
+      "minimum": 0.9999232245681382,
+      "normal_95_interval_across_seeds": [
+        0.9999696372319024,
+        1.0
+      ],
+      "quantile_10": 0.9999451859566421,
+      "quantile_90": 1.0,
+      "seeds": 11,
+      "standard_deviation": 2.6077242230337972e-05,
+      "total_valid_tokens": 2006596
+    },
+    "pure_ssm_13488": {
+      "accuracies": [
+        0.9999123057023217,
+        0.9751649907012722,
+        0.8639449445774683,
+        0.6649576582202211,
+        0.9999506808778804,
+        1.0,
+        0.985211769218125,
+        0.9242729833715156,
+        0.9999725929783211,
+        0.9892569234987661,
+        0.12877886086989912
+      ],
+      "maximum": 1.0,
+      "mean_accuracy": 0.86649306454689,
+      "minimum": 0.12877886086989912,
+      "normal_95_interval_across_seeds": [
+        0.7100932618762388,
+        1.0
+      ],
+      "quantile_10": 0.6649576582202211,
+      "quantile_90": 0.9999725929783211,
+      "seeds": 11,
+      "standard_deviation": 0.2646527871143748,
+      "total_valid_tokens": 2006596
+    },
+    "pure_tf_10608": {
+      "accuracies": [
+        0.8746300396816697,
+        0.8710247252897967,
+        0.8731171955048299,
+        0.8734457335042342,
+        0.8747239499136915,
+        0.878303713986294,
+        0.868155169579749,
+        0.8715868857490491,
+        0.8727491983446158,
+        0.87185632026323,
+        0.5793896772848703
+      ],
+      "maximum": 0.878303713986294,
+      "mean_accuracy": 0.8462711462820027,
+      "minimum": 0.5793896772848703,
+      "normal_95_interval_across_seeds": [
+        0.7939407858174673,
+        0.8986015067465382
+      ],
+      "quantile_10": 0.868155169579749,
+      "quantile_90": 0.8747239499136915,
+      "seeds": 11,
+      "standard_deviation": 0.08855110755352667,
+      "total_valid_tokens": 2006596
+    },
+    "random_target_accuracy": 0.04185634246695264
+  },
+  "instantiated_parameter_counts": {
+    "ssm_ssm_d16": 7328,
+    "ssm_ssm_d20": 10280,
+    "ssm_ssm_d24": 13488,
+    "ssm_ssm_d32": 21056,
+    "ssm_tf_d12": 3960,
+    "ssm_tf_d4": 872,
+    "ssm_tf_d8": 2192,
+    "tf_ssm_d8": 2192,
+    "tf_tf_d16": 5024,
+    "tf_tf_d20": 7560,
+    "tf_tf_d24": 10608,
+    "tf_tf_d32": 18240
+  },
+  "negative_control": {
+    "accuracy": 0.04185634246695264,
+    "passed": true,
+    "random_targets": true,
+    "threshold": 0.2
+  },
+  "paired_seed_route": {
+    "hybrid_vs_pure_ssm": {
+      "hybrid_minus_pure": [
+        8.769429767829795e-05,
+        0.02483500929872784,
+        0.13604957618063962,
+        0.3350423417797789,
+        3.287941474638956e-05,
+        0.0,
+        0.014782751630047719,
+        0.07572701662848436,
+        -2.7407021679026755e-05,
+        0.010666301069372053,
+        0.8712156535763068
+      ],
+      "losses": 1,
+      "mean_difference": 0.133491983350373,
+      "one_sided_exact_sign_p": 0.0107421875,
+      "paired_seeds": [
+        260352001,
+        260352002,
+        260352003,
+        260352004,
+        260352005,
+        260352006,
+        260352007,
+        260352008,
+        260352009,
+        260352010,
+        260352011
+      ],
+      "pure_point": "ssm_ssm_d24",
+      "ties": 1,
+      "wins": 9
+    },
+    "hybrid_vs_pure_tf": {
+      "hybrid_minus_pure": [
+        0.12536996031833025,
+        0.1289752747102033,
+        0.126877325253278,
+        0.12655426649576584,
+        0.1252596103789353,
+        0.12169628601370597,
+        0.13183935126842372,
+        0.12841311425095092,
+        0.12719598761202622,
+        0.1280669043049082,
+        0.42060483716133557
+      ],
+      "losses": 0,
+      "mean_difference": 0.1537139016152603,
+      "one_sided_exact_sign_p": 0.00048828125,
+      "paired_seeds": [
+        260352001,
+        260352002,
+        260352003,
+        260352004,
+        260352005,
+        260352006,
+        260352007,
+        260352008,
+        260352009,
+        260352010,
+        260352011
+      ],
+      "pure_point": "tf_tf_d24",
+      "ties": 0,
+      "wins": 11
+    }
+  },
+  "source_route": {
+    "finding": "The paper itself says the pure models attain around 0.9, not that they match the perfect hybrid.",
+    "paper_caption": "At 2000 parameters hybrids consistently attain perfect accuracy; pure models with 6x parameters attain around 0.9.",
+    "paper_table": {
+      "hybrid_approx_2000": 0.999,
+      "pure_ssm_approx_12000": 0.931,
+      "pure_tf_approx_12000": 0.923
+    }
+  },
+  "strict_route_limitation": "The finite converged runs did not establish the strict separation needed to verify or falsify the imported wording.",
+  "strict_route_status": "BLOCKED",
+  "verdict": "FALSIFIED"
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "7500537f-bb1c-42e3-94b2-e28575ba0a8b",
+  "git_sha": "30960fd6476dbbcfc33d27d1ae675cfa06dd8e66",
+  "backend": "hf",
+  "flavor": "cpu-upgrade",
+  "image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
+  "estimated_scientific_cores": 8,
+  "actual_os_cpu_count": 64,
+  "actual_cpu_affinity": 64,
+  "torch_threads": 8,
+  "training_steps": 200,
+  "training_seconds": 5.9848007201217115,
+  "scientific_stage_seconds": 7.041368284961209,
+  "steps_per_second": 33.41798822600273,
+  "parameter_count": 2192,
+  "parameter_calibration": {
+    "saved_figure_6_count": 11496,
+    "effective_state_size_1_count": 9336,
+    "effective_state_size_16_count": 11496
+  },
+  "initial_accuracy": 0.030752381995400285,
+  "final_accuracy": 0.15393713722483846,
+  "held_out_valid_tokens": 45655,
+  "status": "PILOT_ONLY_NOT_CLAIM_EVIDENCE",
+  "claims_1_to_4_regression": "PASS",
+  "negative_control_returncode": 3
+}

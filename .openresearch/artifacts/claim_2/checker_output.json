@@ -1,0 +1,15 @@
+{
+  "length": 17,
+  "dependency_range": 8,
+  "windows": [2, 2, 3],
+  "total_window": 7,
+  "differing_position_zero_based": 8,
+  "shared_r_suffix": true,
+  "observations_equal": true,
+  "target_labels_differ": true,
+  "deterministic_predictor_accuracies": [0.5, 0.5],
+  "max_accuracy_on_uniform_pair": 0.5,
+  "target_threshold": 0.6666666666666666,
+  "premise_total_window_below_r": true,
+  "returncode": 0
+}

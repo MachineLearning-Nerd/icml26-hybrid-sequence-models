@@ -1,0 +1,20 @@
+{
+  "length": 4,
+  "vocabulary_size": 4,
+  "number_tokens": 2,
+  "total_sequences": 256,
+  "undefined_no_number_sequences": 16,
+  "valid_sequences": 240,
+  "correct_sequences": 240,
+  "accuracy_on_defined_domain": 1.0,
+  "temperature": 1.0,
+  "minimum_target_attention_weight": 0.8807970779778823,
+  "theoretical_target_weight_lower_bound": 0.8807970779778823,
+  "token_code_bits": 2,
+  "position_code_bits": 2,
+  "embedding_dimension": 9,
+  "dimension_upper_bound": 9,
+  "reachable_mamba_states": 3,
+  "attention_window": 2,
+  "returncode": 0
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "stage": "claim_6_static_evidence",
+  "paper": {
+    "arxiv_id": "2603.08859",
+    "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
+    "source_url": "https://export.arxiv.org/e-print/2603.08859",
+    "retrieved_utc": "2026-07-28T17:45:09Z",
+    "html_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+    "source_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+  },
+  "official_code": {
+    "url": "https://github.com/SprocketLab/hybrid-expressivity",
+    "sha": "7beeb0de80f89eb5d75301aef8e97ee9b36ca999"
+  },
+  "judged_space": {
+    "space_id": "DineshAI/82EJxJzG6r",
+    "sha": "9449686999e15049fa1e258517852b9f2a00bda1",
+    "manifest_entries": 13
+  },
+  "verdict_dataset": {
+    "url": "https://huggingface.co/datasets/ICML-2026-agent-repro/verdicts/resolve/main/verdicts.json",
+    "sha256": "470902e334497b1f4e42c9cd8b06ce939a984567f2aa8446b9aa4fe5cfe584aa",
+    "filter": {
+      "space_id": "DineshAI/82EJxJzG6r"
+    }
+  },
+  "reference_logbook": {
+    "space_id": "agharsallah/82ejxjzg6r-logbook",
+    "audited_sha": "66eb9e56f4b07b9b825d96b12997665fde90f402"
+  },
+  "fixed_run_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "planned_compute": {
+    "estimated_scientific_cores": 1,
+    "runtime_class": "static evidence replay expected under five minutes",
+    "backend": "local",
+    "flavor": "local CPU",
+    "image": "repository-level uv .venv with frozen lock",
+    "timeout": "300 seconds"
+  },
+  "empirical_stage": {
+    "kind": "claim_6_static_evidence"
+  },
+  "claims": [
+    {"id": 1, "verdict": "FALSIFIED", "reason": "The injection forces q log|Y| >= m log|V|, and a binary-output singleton-state SSM reaches the exact 1/2 threshold for any theorem-chosen distribution; the claimed linear-in-m consequence is false while the printed inequality is vacuous."},
+    {"id": 2, "verdict": "VERIFIED", "reason": "A symbolic suffix-indistinguishability certificate and independent exhaustive checker reconstruct Theorem 3.7 under the sliding-window dependency premise used by the paper's proof."},
+    {"id": 3, "verdict": "VERIFIED", "reason": "A corrected finite-temperature Mamba-state plus true N-token sliding-window attention construction is exhaustively checked on complete finite domains and certified symbolically for every input on which selective copying is defined."},
+    {"id": 4, "verdict": "VERIFIED", "reason": "An exact first-hit window calibration, prefix-state certificate, finite-temperature two-attention construction, and exhaustive W=2 domain establish at least 99% success under the explicitly audited uniform-word distribution."},
+    {"id": 5, "verdict": "FALSIFIED", "reason": "The exact imported word 'match' conflicts with the paper's own 0.999 versus 0.923/0.931 table and 'around 0.9' caption. A faithful 11-seed CPU rerun independently finds 0.999985 at 2,192 parameters versus 0.846271/0.866493 near 12k, paired exact sign-test p<0.05 for both pure models, and calibrated finite first-hit ratios 8.32x/9.61x rather than 6x."},
+    {"id": 6, "verdict": "FALSIFIED", "reason": "The exact imported composite misidentifies Figure 5 as single-key recall, whereas the source task is five-bit decoding recall. Independently, a faithful complete Figure 6 grid rerun over 11 seeds found first 60%-mean hits at 3,684 hybrid versus 7,100 pure-Transformer parameters, a 1.93x ratio rather than 6x; the randomized-target control remained at 0.0."}
+  ]
+}

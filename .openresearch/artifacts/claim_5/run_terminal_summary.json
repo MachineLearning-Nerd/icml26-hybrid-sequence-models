@@ -1,0 +1,1009 @@
+{
+  "schema_version": 1,
+  "stage": "claim_5_selective_copy_parameter_frontier",
+  "git_sha": "d0e944e3008518a793074cf40afd7fce0566f9c1",
+  "paper": {
+    "arxiv_id": "2603.08859",
+    "html_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+    "html_url": "https://ar5iv.labs.arxiv.org/html/2603.08859",
+    "retrieved_utc": "2026-07-28T17:45:09Z",
+    "source_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8",
+    "source_url": "https://export.arxiv.org/e-print/2603.08859"
+  },
+  "official_code": {
+    "sha": "7beeb0de80f89eb5d75301aef8e97ee9b36ca999",
+    "url": "https://github.com/SprocketLab/hybrid-expressivity"
+  },
+  "judged_space": {
+    "manifest_entries": 13,
+    "sha": "9449686999e15049fa1e258517852b9f2a00bda1",
+    "space_id": "DineshAI/82EJxJzG6r"
+  },
+  "runtime": {
+    "actual_cgroup_cpu_quota": 8.0,
+    "actual_cpu_affinity": 64,
+    "actual_os_cpu_count": 64,
+    "estimated_scientific_cores": 8,
+    "platform": "Linux-6.12.90-120.164.amzn2023.x86_64-x86_64-with-glibc2.36",
+    "python": "3.12.12",
+    "runtime_class": "uncertain parallel CPU training sweep expected to exceed 5 minutes",
+    "selected_backend": "hf",
+    "selected_flavor": "cpu-upgrade",
+    "selected_image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
+    "selected_timeout": "14400 seconds",
+    "verifier_runtime_seconds": 6197.443246
+  },
+  "overall": "PASS",
+  "claim_results": {
+    "1": {
+      "claim": 1,
+      "confidence": "HIGH",
+      "formal_inequality_note": "The displayed Omega(m log|V|-q log|Y|) inequality is not contradicted; injectivity makes its argument non-positive, so it is vacuous.",
+      "independent_checker": "PASS",
+      "negative_control": {
+        "expected": "nonzero and non-injective",
+        "injective": false,
+        "returncode": 4
+      },
+      "routes": {
+        "cardinality": {
+          "result": "q log|Y| >= m log|V| for every injective G",
+          "rows": [
+            {
+              "alphabet_bits": 1,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 2,
+              "image_size": 2,
+              "injective": true,
+              "m": 1,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 1,
+              "uniform_label_counts": [
+                1,
+                1
+              ],
+              "vocabulary_size": 2
+            },
+            {
+              "alphabet_bits": 1,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 4,
+              "image_size": 4,
+              "injective": true,
+              "m": 2,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 2,
+              "uniform_label_counts": [
+                4,
+                4
+              ],
+              "vocabulary_size": 2
+            },
+            {
+              "alphabet_bits": 1,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 8,
+              "image_size": 8,
+              "injective": true,
+              "m": 3,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 3,
+              "uniform_label_counts": [
+                12,
+                12
+              ],
+              "vocabulary_size": 2
+            },
+            {
+              "alphabet_bits": 1,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 16,
+              "image_size": 16,
+              "injective": true,
+              "m": 4,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 4,
+              "uniform_label_counts": [
+                32,
+                32
+              ],
+              "vocabulary_size": 2
+            },
+            {
+              "alphabet_bits": 1,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 32,
+              "image_size": 32,
+              "injective": true,
+              "m": 5,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 5,
+              "uniform_label_counts": [
+                80,
+                80
+              ],
+              "vocabulary_size": 2
+            },
+            {
+              "alphabet_bits": 1,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 64,
+              "image_size": 64,
+              "injective": true,
+              "m": 6,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 6,
+              "uniform_label_counts": [
+                192,
+                192
+              ],
+              "vocabulary_size": 2
+            },
+            {
+              "alphabet_bits": 2,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 4,
+              "image_size": 4,
+              "injective": true,
+              "m": 1,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 2,
+              "uniform_label_counts": [
+                4,
+                4
+              ],
+              "vocabulary_size": 4
+            },
+            {
+              "alphabet_bits": 2,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 16,
+              "image_size": 16,
+              "injective": true,
+              "m": 2,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 4,
+              "uniform_label_counts": [
+                32,
+                32
+              ],
+              "vocabulary_size": 4
+            },
+            {
+              "alphabet_bits": 2,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 64,
+              "image_size": 64,
+              "injective": true,
+              "m": 3,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 6,
+              "uniform_label_counts": [
+                192,
+                192
+              ],
+              "vocabulary_size": 4
+            },
+            {
+              "alphabet_bits": 2,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 256,
+              "image_size": 256,
+              "injective": true,
+              "m": 4,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 8,
+              "uniform_label_counts": [
+                1024,
+                1024
+              ],
+              "vocabulary_size": 4
+            },
+            {
+              "alphabet_bits": 2,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 1024,
+              "image_size": 1024,
+              "injective": true,
+              "m": 5,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 10,
+              "uniform_label_counts": [
+                5120,
+                5120
+              ],
+              "vocabulary_size": 4
+            },
+            {
+              "alphabet_bits": 2,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 4096,
+              "image_size": 4096,
+              "injective": true,
+              "m": 6,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 12,
+              "uniform_label_counts": [
+                24576,
+                24576
+              ],
+              "vocabulary_size": 4
+            },
+            {
+              "alphabet_bits": 3,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 8,
+              "image_size": 8,
+              "injective": true,
+              "m": 1,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 3,
+              "uniform_label_counts": [
+                12,
+                12
+              ],
+              "vocabulary_size": 8
+            },
+            {
+              "alphabet_bits": 3,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 64,
+              "image_size": 64,
+              "injective": true,
+              "m": 2,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 6,
+              "uniform_label_counts": [
+                192,
+                192
+              ],
+              "vocabulary_size": 8
+            },
+            {
+              "alphabet_bits": 3,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 512,
+              "image_size": 512,
+              "injective": true,
+              "m": 3,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 9,
+              "uniform_label_counts": [
+                2304,
+                2304
+              ],
+              "vocabulary_size": 8
+            },
+            {
+              "alphabet_bits": 3,
+              "best_uniform_constant_success": 0.5,
+              "domain_size": 4096,
+              "image_size": 4096,
+              "injective": true,
+              "m": 4,
+              "output_size": 2,
+              "printed_rhs_bits": 0.0,
+              "q": 12,
+              "uniform_label_counts": [
+                24576,
+                24576
+              ],
+              "vocabulary_size": 8
+            }
+          ]
+        },
+        "counterexample_family": {
+          "G": "concatenated two-bit encodings of the m payload symbols",
+          "V": 4,
+          "Y": 2,
+          "any_D_constant_success_at_least": 0.5,
+          "q": "2m",
+          "singleton_state_log_bits": 0.0
+        },
+        "proof_reconstruction": [
+          {
+            "fano_bound_error_1_2_bits": -1.0,
+            "fano_bound_error_1_8_bits": 0.6628711136008072,
+            "m": 1,
+            "printed_rhs_bits": 0,
+            "q": 2
+          },
+          {
+            "fano_bound_error_1_2_bits": -2.0,
+            "fano_bound_error_1_8_bits": 1.3257422272016144,
+            "m": 2,
+            "printed_rhs_bits": 0,
+            "q": 4
+          },
+          {
+            "fano_bound_error_1_2_bits": -3.0,
+            "fano_bound_error_1_8_bits": 1.9886133408024218,
+            "m": 3,
+            "printed_rhs_bits": 0,
+            "q": 6
+          },
+          {
+            "fano_bound_error_1_2_bits": -4.0,
+            "fano_bound_error_1_8_bits": 2.6514844544032288,
+            "m": 4,
+            "printed_rhs_bits": 0,
+            "q": 8
+          },
+          {
+            "fano_bound_error_1_2_bits": -5.0,
+            "fano_bound_error_1_8_bits": 3.3143555680040357,
+            "m": 5,
+            "printed_rhs_bits": 0,
+            "q": 10
+          },
+          {
+            "fano_bound_error_1_2_bits": -6.0,
+            "fano_bound_error_1_8_bits": 3.9772266816048436,
+            "m": 6,
+            "printed_rhs_bits": 0,
+            "q": 12
+          },
+          {
+            "fano_bound_error_1_2_bits": -7.0,
+            "fano_bound_error_1_8_bits": 4.64009779520565,
+            "m": 7,
+            "printed_rhs_bits": 0,
+            "q": 14
+          },
+          {
+            "fano_bound_error_1_2_bits": -8.0,
+            "fano_bound_error_1_8_bits": 5.3029689088064575,
+            "m": 8,
+            "printed_rhs_bits": 0,
+            "q": 16
+          }
+        ]
+      },
+      "scope": "The imported claim that Theorem 3.3 establishes a state lower bound linear in m at success probability 1/2.",
+      "verdict": "FALSIFIED"
+    },
+    "2": {
+      "claim": 2,
+      "confidence": "MEDIUM",
+      "definition_caveat": "The paper does not formally define sliding-window masking in its preliminaries; verification conditions on the exact dependency premise used at Appendix proof lines 93-94.",
+      "independent_checker": {
+        "cases": 8,
+        "result": "PASS",
+        "rows": [
+          {
+            "dependency_range": 3,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 4,
+            "length": 8,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 2,
+            "windows": [
+              1,
+              1
+            ]
+          },
+          {
+            "dependency_range": 4,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 4,
+            "length": 9,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 3,
+            "windows": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "dependency_range": 5,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 6,
+            "length": 12,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 4,
+            "windows": [
+              2,
+              2
+            ]
+          },
+          {
+            "dependency_range": 8,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 8,
+            "length": 17,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 7,
+            "windows": [
+              2,
+              2,
+              3
+            ]
+          },
+          {
+            "dependency_range": 10,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 13,
+            "length": 24,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 9,
+            "windows": [
+              1,
+              3,
+              2,
+              3
+            ]
+          },
+          {
+            "dependency_range": 16,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 15,
+            "length": 32,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 15,
+            "windows": [
+              5,
+              5,
+              5
+            ]
+          },
+          {
+            "dependency_range": 20,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 29,
+            "length": 50,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 19,
+            "windows": [
+              0,
+              4,
+              0,
+              7,
+              8
+            ]
+          },
+          {
+            "dependency_range": 32,
+            "deterministic_predictor_accuracies": [
+              0.5,
+              0.5
+            ],
+            "differing_position_zero_based": 32,
+            "length": 65,
+            "max_accuracy_on_uniform_pair": 0.5,
+            "observations_equal": true,
+            "premise_total_window_below_r": true,
+            "shared_r_suffix": true,
+            "target_labels_differ": true,
+            "target_threshold": 0.6666666666666666,
+            "total_window": 31,
+            "windows": [
+              10,
+              10,
+              11
+            ]
+          }
+        ]
+      },
+      "negative_control": {
+        "expected": "nonzero because W >= R and the proof premise is unavailable",
+        "observations_equal": false,
+        "returncode": 5,
+        "total_window": 9
+      },
+      "scope": "Theorem 3.7 under the final-suffix dependency premise stated in its proof.",
+      "symbolic_certificate": {
+        "derived": [
+          "x[-W:] = x_prime[-W:]",
+          "M(x) = M(x_prime)",
+          "accuracy under Uniform({x,x_prime}) <= 1/2",
+          "1/2 < 2/3",
+          "therefore any model reaching 2/3 has sum_i W_i >= R"
+        ],
+        "premises": [
+          "W = sum_i W_i",
+          "W < R",
+          "x[-R:] = x_prime[-R:]",
+          "F(x) != F(x_prime)",
+          "M(x) is a function only of x[-W:]"
+        ]
+      },
+      "verdict": "VERIFIED"
+    },
+    "3": {
+      "claim": 3,
+      "complete_domain_checks": {
+        "accuracy": 1.0,
+        "cases": 5,
+        "rows": [
+          {
+            "accuracy_on_defined_domain": 1.0,
+            "attention_window": 2,
+            "correct_sequences": 240,
+            "dimension_upper_bound": 9,
+            "embedding_dimension": 9,
+            "length": 4,
+            "minimum_target_attention_weight": 0.8807970779778823,
+            "number_tokens": 2,
+            "position_code_bits": 2,
+            "reachable_mamba_states": 3,
+            "temperature": 1.0,
+            "theoretical_target_weight_lower_bound": 0.8807970779778823,
+            "token_code_bits": 2,
+            "total_sequences": 256,
+            "undefined_no_number_sequences": 16,
+            "valid_sequences": 240,
+            "vocabulary_size": 4
+          },
+          {
+            "accuracy_on_defined_domain": 1.0,
+            "attention_window": 1,
+            "correct_sequences": 211,
+            "dimension_upper_bound": 13,
+            "embedding_dimension": 11,
+            "length": 5,
+            "minimum_target_attention_weight": 1.0,
+            "number_tokens": 1,
+            "position_code_bits": 3,
+            "reachable_mamba_states": 2,
+            "temperature": 1.0,
+            "theoretical_target_weight_lower_bound": 1.0,
+            "token_code_bits": 2,
+            "total_sequences": 243,
+            "undefined_no_number_sequences": 32,
+            "valid_sequences": 211,
+            "vocabulary_size": 3
+          },
+          {
+            "accuracy_on_defined_domain": 1.0,
+            "attention_window": 2,
+            "correct_sequences": 992,
+            "dimension_upper_bound": 13,
+            "embedding_dimension": 11,
+            "length": 5,
+            "minimum_target_attention_weight": 0.8807970779778823,
+            "number_tokens": 2,
+            "position_code_bits": 3,
+            "reachable_mamba_states": 3,
+            "temperature": 1.0,
+            "theoretical_target_weight_lower_bound": 0.8807970779778823,
+            "token_code_bits": 2,
+            "total_sequences": 1024,
+            "undefined_no_number_sequences": 32,
+            "valid_sequences": 992,
+            "vocabulary_size": 4
+          },
+          {
+            "accuracy_on_defined_domain": 1.0,
+            "attention_window": 2,
+            "correct_sequences": 728,
+            "dimension_upper_bound": 13,
+            "embedding_dimension": 11,
+            "length": 6,
+            "minimum_target_attention_weight": 0.8807970779778823,
+            "number_tokens": 2,
+            "position_code_bits": 3,
+            "reachable_mamba_states": 3,
+            "temperature": 1.0,
+            "theoretical_target_weight_lower_bound": 0.8807970779778823,
+            "token_code_bits": 2,
+            "total_sequences": 729,
+            "undefined_no_number_sequences": 1,
+            "valid_sequences": 728,
+            "vocabulary_size": 3
+          },
+          {
+            "accuracy_on_defined_domain": 1.0,
+            "attention_window": 3,
+            "correct_sequences": 4095,
+            "dimension_upper_bound": 13,
+            "embedding_dimension": 11,
+            "length": 6,
+            "minimum_target_attention_weight": 0.8807970779778825,
+            "number_tokens": 3,
+            "position_code_bits": 3,
+            "reachable_mamba_states": 4,
+            "temperature": 1.3465735902799727,
+            "theoretical_target_weight_lower_bound": 0.8807970779778825,
+            "token_code_bits": 2,
+            "total_sequences": 4096,
+            "undefined_no_number_sequences": 1,
+            "valid_sequences": 4095,
+            "vocabulary_size": 4
+          }
+        ],
+        "undefined_sequences_audited": 82,
+        "valid_sequences": 6266
+      },
+      "confidence": "MEDIUM",
+      "deviations": [
+        "The query/key indexing is corrected to compare control distance n with relative distance L+1-i.",
+        "The checker enforces an actual N-token window; the official notebook uses full causal attention.",
+        "Sequences containing no number token are audited but excluded because the paper's argmax target is undefined on them."
+      ],
+      "negative_control": {
+        "expected": "nonzero because uniform attention does not identify the target",
+        "output": {
+          "control": "zero attention temperature",
+          "control_value": 2,
+          "correct": false,
+          "expected_token": 3,
+          "number_tokens": 2,
+          "predicted_token": 0,
+          "sequence": [
+            0,
+            2,
+            3,
+            0
+          ],
+          "target_attention_weight": 0.5,
+          "target_slot_in_window": 0
+        },
+        "returncode": 7
+      },
+      "pure_transformer_lower_bound": {
+        "conclusion": "sum_i W_i >= L-1 = Omega(L) by verified Claim 2",
+        "different_targets": [
+          0,
+          3
+        ],
+        "length": 12,
+        "shared_suffix": 11
+      },
+      "scope": "Every selective-copying input for which the source task is defined.",
+      "symbolic_certificate": {
+        "attention_window": "exactly N",
+        "decoder": "linear code correlation; strict coordinate-sign preservation",
+        "embedding_dimension": "2 ceil(log2|V|)+2 ceil(log2 L)+1",
+        "mamba_recurrence": "last number state in {None,1,...,N}",
+        "reachable_states": "N+1 = O(|V|)",
+        "target_mass": "1/(1+(N-1)exp(-2 beta)) > 1/2",
+        "working_memory": "O(N * max(log|V|,log L)) = tilde O(N)"
+      },
+      "verdict": "VERIFIED"
+    },
+    "4": {
+      "calibrated_sweep": {
+        "all_first_hits": true,
+        "minimum_success_probability": 0.9900905714042791,
+        "rows": [
+          {
+            "attention_window": 9,
+            "calibrated_window_linear_bound": 11,
+            "calibration_method": "monotone doubling plus exact binary search",
+            "calibration_visited_windows": [
+              1,
+              2,
+              4,
+              6,
+              7,
+              7
+            ],
+            "dimension_upper_bound": 17,
+            "direct_cases": 256,
+            "direct_correct_when_defined": 254,
+            "embedding_dimension": 14,
+            "full_vocabulary": 4,
+            "mamba_reachable_prefix_states": 3,
+            "minimum_context_window": 7,
+            "minimum_target_attention_weight": 0.9386867628625,
+            "previous_success_probability": 0.984375,
+            "previous_window": 6,
+            "query_bits": 1,
+            "success_denominator": 128,
+            "success_numerator": 127,
+            "success_probability": 0.9921875,
+            "successful_joint_inputs": 254,
+            "target_probability": 0.99,
+            "total_joint_inputs": 256,
+            "word_vocabulary": 2
+          },
+          {
+            "attention_window": 20,
+            "calibrated_window_linear_bound": 20,
+            "calibration_method": "monotone doubling plus exact binary search",
+            "calibration_visited_windows": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              24,
+              20,
+              18,
+              17,
+              17
+            ],
+            "dimension_upper_bound": 27,
+            "direct_cases": 12,
+            "direct_correct_when_defined": 12,
+            "embedding_dimension": 21,
+            "full_vocabulary": 6,
+            "mamba_reachable_prefix_states": 7,
+            "minimum_context_window": 17,
+            "minimum_target_attention_weight": 0.9783600328722688,
+            "previous_success_probability": 0.9899774042423815,
+            "previous_window": 16,
+            "query_bits": 2,
+            "success_denominator": 17179869184,
+            "success_numerator": 17050729021,
+            "success_probability": 0.9924830531817861,
+            "successful_joint_inputs": 68202916084,
+            "target_probability": 0.99,
+            "total_joint_inputs": 68719476736,
+            "word_vocabulary": 4
+          },
+          {
+            "attention_window": 39,
+            "calibrated_window_linear_bound": 38,
+            "calibration_method": "monotone doubling plus exact binary search",
+            "calibration_visited_windows": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              32,
+              48,
+              40,
+              36,
+              34,
+              35,
+              35
+            ],
+            "dimension_upper_bound": 32,
+            "direct_cases": 24,
+            "direct_correct_when_defined": 24,
+            "embedding_dimension": 26,
+            "full_vocabulary": 10,
+            "mamba_reachable_prefix_states": 15,
+            "minimum_context_window": 35,
+            "minimum_target_attention_weight": 0.9897811266341267,
+            "previous_success_probability": 0.9893273122680238,
+            "previous_window": 34,
+            "query_bits": 3,
+            "success_denominator": 40564819207303340847894502572032,
+            "success_numerator": 40186000515037676066211784946089,
+            "success_probability": 0.9906613982345208,
+            "successful_joint_inputs": 321488004120301408529694279568712,
+            "target_probability": 0.99,
+            "total_joint_inputs": 324518553658426726783156020576256,
+            "word_vocabulary": 8
+          },
+          {
+            "attention_window": 77,
+            "calibrated_window_linear_bound": 75,
+            "calibration_method": "monotone doubling plus exact binary search",
+            "calibration_visited_windows": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              32,
+              64,
+              96,
+              80,
+              72,
+              68,
+              70,
+              71,
+              72
+            ],
+            "dimension_upper_bound": 37,
+            "direct_cases": 48,
+            "direct_correct_when_defined": 48,
+            "embedding_dimension": 31,
+            "full_vocabulary": 18,
+            "mamba_reachable_prefix_states": 31,
+            "minimum_context_window": 72,
+            "minimum_target_attention_weight": 0.9950286562003868,
+            "previous_success_probability": 0.9897679978109857,
+            "previous_window": 71,
+            "query_bits": 4,
+            "success_denominator": 497323236409786642155382248146820840100456150797347717440463976893159497012533375533056,
+            "success_numerator": 492552662243918575285194091514866868927475919332703465625120453844363737334646412642431,
+            "success_probability": 0.9904074979477991,
+            "successful_joint_inputs": 7880842595902697204563105464237869902839614709323255450001927261509819797354342602278896,
+            "target_probability": 0.99,
+            "total_joint_inputs": 7957171782556586274486115970349133441607298412757563479047423630290551952200534008528896,
+            "word_vocabulary": 16
+          },
+          {
+            "attention_window": 152,
+            "calibrated_window_linear_bound": 149,
+            "calibration_method": "monotone doubling plus exact binary search",
+            "calibration_visited_windows": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              32,
+              64,
+              128,
+              192,
+              160,
+              144,
+              152,
+              148,
+              146,
+              145,
+              146
+            ],
+            "dimension_upper_bound": 42,
+            "direct_cases": 96,
+            "direct_correct_when_defined": 96,
+            "embedding_dimension": 36,
+            "full_vocabulary": 34,
+            "mamba_reachable_prefix_states": 63,
+            "minimum_context_window": 146,
+            "minimum_target_attention_weight": 0.997531010461937,
+            "previous_success_probability": 0.9899838977460313,
+            "previous_window": 145,
+            "query_bits": 5,
+            "success_denominator": 5648027917416434993898217684409255726702707823703155049366803861725387660722396999811747841990459993941795730996567993156246593731756781895253106176973892212861592182965432241145264144985407055447514718957669060731469824,
+            "success_numerator": 5593224543048388531039645591561066932719493204005749121549438480554495279130346647917258567100910047006933934149700904176072323291350870410849677034810364704885074809160103789400192772137834981575848087688607379057978943,
+            "success_probability": 0.9902969009414679,
+            "successful_joint_inputs": 178983185377548432993268658929954141847023782528183971889582031377743848932171092733352274147229121504221885892790428933634314345323227853147189665113931670556322393893123321260806168708410719410427138806035436129855326176,
+            "target_probability": 0.99,
+            "total_joint_inputs": 180736893357325919804742965901096183254486650358500961579737723575212405143116703993975930943694719806137463391890175780999890999416217020648099397663164550811570949854893831716648452639533025774320471006645409943407034368,
+            "word_vocabulary": 32
+          },
+          {
+            "attention_window": 300,
+            "calibrated_window_linear_bound": 296,
+            "calibration_method": "monotone doubling plus exact binary search",
+            "calibration_visited_windows": [
+              1,
+              2,
+              4,
+              8,
+              16,
+              32,
+              64,
+              128,
+              256,
+              384,
+              320,
+              288,
+              304,
+              296,
+              292,
+              294,
+              293,
+              293
+            ],
+            "dimension_upper_bound": 47,
+            "direct_cases": 192,
+            "direct_correct_when_defined": 192,
+            "embedding_dimension": 41,
+            "full_vocabulary": 66,
+            "mamba_reachable_prefix_states": 127,
+            "minimum_context_window": 293,
+            "minimum_target_attention_weight": 0.9987613486829228,
+            "previous_success_probability": 0.9899332788868868,
+            "previous_window": 292,
+            "query_bits": 6,
+            "success_denominator": 16245473620240365644440909027940656111219894102871199872809783525766668682836752547283022511277572456854949984314302451522622048263297026277561695255364162736105663077608533052657074068175562869012829856816092079310736507481555469672244594249798873076912697516606644496713394620513420958577001839024302007007060325840739134997334908834992601662082145558466882581112421772966774841573773131250449601603478650491637269921710146257558957787382836770452011577197044850916350199386528438723884315552899738226253939399599243935029919744,
+            "success_numerator": 16084490259396926477471951504983831484509101649090052307064126622259154582327696988521445494247660855019455168940294081931359483411703051494669722749852040709288153555869481159343799396397386645060272849342536922422086170713155915321746055717246898593019033244743503652339559626287261132791893014082993285189193436703553562781141689960625150626880045574456274762553349766578445041667644125863807819806933843953913956757002757302962980166435659542426719853701041515922699512389728827474742931283259037058694268853685128098593986241,
+            "success_probability": 0.9900905714042791,
+            "successful_joint_inputs": 1029407376601403294558204896318965215008582505541763347652104103824585893268972607265372511631850294721245130812178821243607006938348995295658862255990530605394441827575646794198003161369432745283857462357922363035013514925641978580591747565903801509953218127663584233749731816082384712498681152901311570252108379949027428017993068157480009640120322916765201584803414385061020482666729224055283700467643766013050493232448176467389630730651882210715310070636866657019052768792942644958383547602128578371756433206635848198310015119424,
+            "target_probability": 0.99,
+            "total_joint_inputs": 1039710311695383401244218177788201991118073222583756791859826145649066795701552163026113440721764637238716798996115356897447811088851009681763948496343306415110762436966946115370052740363236023616821110836229893075887136478819550059023654031987127876922412641062825247789657255712858941348928117697555328448451860853807304639829434165439526506373257315741880485191194993469873589860721480400028774502622633631464785274989449360483773298392501553308928740940610870458646412760737820078328596195385583246480252121574351611841914863616,
+            "word_vocabulary": 64
+          }
+        ]
+      },
+      "claim": 4,
+      "confidence": "MEDIUM",
+      "negative_control": {
+        "expected": "nonzero because K-1 is strictly below 99%",
+        "output": {
+          "control": "one word slot below the calibrated first hit",
+          "meets_target": false,
+          "success_denominator": 64,
+          "success_numerator": 63,
+          "success_probability": 0.984375,
+          "target_probability": 0.99,
+          "tested_context_window": 6,
+          "word_vocabulary": 2
+        },
+        "returncode": 9
+      },
+      "scope": "The associative-recall restatement under an explicit iid-uniform word context followed by the fixed-length query-bit suffix.",
+      "source_caveats": [
+        "The main theorem accidentally says selective copying; the task, heading, and appendix restatement say associative recall with decoding.",
+        "The source alternates between uniform non-bit tokens and a uniform full sequence; this verifier uses the former, matching the imported claim.",
+        "A power-of-two word vocabulary and exactly log2(W) query bits are required for the stated binary decoder.",
+        "Absent query words are counted as failures, although the source's last-occurrence target is undefined there."
+      ],
+      "symbolic_certificate": {
+        "attention_1": "masked previous/current pairing",
+        "attention_2": "word-code matching with strict recency bias and finite temperature; last matching pair has mass >1/2",
+        "dimension": "3 ceil(log2(W+2))+2 ceil(log2 L)+2",
+        "distribution": "K iid uniform word tokens followed by log2(W) bits encoding a uniform query word; absence is conservatively counted as failure",
+        "mamba_states": "all binary prefixes through length log2(W): 2W-1",
+        "success_probability": "1 - ((W-1)/W)^K",
+        "window_bound": "K <= ceil(W ln 100)+1, hence K=O(W)"
+      },
+      "verdict": "VERIFIED"
+    }
+  },
+  "negative_control": {
+    "passed": true,
+    "returncode": 3,
+    "stderr": "NEGATIVE_CONTROL_EXPECTED_FAILURE: protected manifest mutation detected"
+  }
+}

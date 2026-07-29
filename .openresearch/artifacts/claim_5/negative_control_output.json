@@ -1,0 +1,7 @@
+{
+  "output": {
+    "error": "aggregate changed: mean_accuracy",
+    "expected_failure": true
+  },
+  "returncode": 4
+}

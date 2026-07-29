@@ -1,0 +1,38 @@
+{
+  "scientific_run_id": "4fd16948-8752-4801-9363-5d176bbd1b8f",
+  "scientific_git_sha": "133ddebd7a6888bde8abe4e511e09a966a506828",
+  "cumulative_run_id": "8c48ebfc-d4a1-4eb2-949d-60661e2337bd",
+  "cumulative_git_sha": "8ba5e099657cd2b61b3201daa11692736cfb083a",
+  "fixed_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "scientific_backend": "hf",
+  "scientific_flavor": "cpu-upgrade",
+  "scientific_image": "ghcr.io/astral-sh/uv:python3.12-bookworm-slim",
+  "estimated_scientific_cores": 6,
+  "actual_cgroup_cpu_quota": 8.0,
+  "workers": 6,
+  "torch_threads_per_worker": 1,
+  "scientific_runtime_seconds": 14432.196208872832,
+  "calibration_seeds": [
+    260360001,
+    260360002
+  ],
+  "final_seeds": [
+    260361001,
+    260361002,
+    260361003,
+    260361004,
+    260361005,
+    260361006,
+    260361007,
+    260361008,
+    260361009,
+    260361010,
+    260361011
+  ],
+  "negative_control_seed": 260369999,
+  "cumulative_backend": "local",
+  "cumulative_estimated_cores": 1,
+  "cumulative_runtime_seconds": 26.024723,
+  "official_code_sha": "7beeb0de80f89eb5d75301aef8e97ee9b36ca999",
+  "paper_source_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+}

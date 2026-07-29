@@ -1,0 +1,17 @@
+{
+  "claim_id": 4,
+  "source": "Theorem 4.6 / label th hybrid recall and its appendix restatement",
+  "exact_imported_claim": "Theorem 4.6 constructs a three-layer hybrid model that achieves 99% accuracy on the associative recall task using embedding dimension O(max(log|V|, log L)) and window size tilde O(|V|).",
+  "distribution": "A context of iid uniform word tokens from a power-of-two word vocabulary M, followed by exactly log2(|M|) bits encoding a query word; the query is uniform and independent.",
+  "failure_accounting": "Contexts where the query word is absent are conservatively counted as failures because the source last-occurrence target is undefined.",
+  "assumptions": [
+    "The word vocabulary size W is a power of two.",
+    "The bit subsequence has exactly log2(W) bits and decodes to a word token.",
+    "Non-bit context tokens are iid uniform over the W word tokens.",
+    "The desired output follows the last occurrence of the decoded query word."
+  ],
+  "pass_condition": "Exact first-hit calibration reaches at least 0.99, the previous window remains below 0.99, and a certified three-layer construction retrieves the correct successor whenever the query is present.",
+  "falsification_condition": "An in-distribution instance within the calibrated success event defeats the construction, or the minimum 99% window is not tilde O(|V|).",
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM"
+}

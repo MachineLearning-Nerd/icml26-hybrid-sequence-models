@@ -1,0 +1,20 @@
+{
+  "word_vocabulary": 2,
+  "full_vocabulary": 4,
+  "query_bits": 1,
+  "calibration_method": "monotone doubling plus exact binary search",
+  "minimum_context_window": 7,
+  "previous_window": 6,
+  "success_numerator": 127,
+  "success_denominator": 128,
+  "success_probability": 0.9921875,
+  "previous_success_probability": 0.984375,
+  "target_probability": 0.99,
+  "total_joint_inputs": 256,
+  "successful_joint_inputs": 254,
+  "attention_window": 9,
+  "mamba_reachable_prefix_states": 3,
+  "direct_cases": 256,
+  "direct_correct_when_defined": 254,
+  "returncode": 0
+}

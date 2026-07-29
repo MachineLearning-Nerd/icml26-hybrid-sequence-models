@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "title": "Expressivity–Efficiency Tradeoffs: Claim-by-Claim Reproduction",
+  "emoji": "🎯",
+  "space_id": "DineshAI/82EJxJzG6r",
+  "paper": {
+    "arxiv_id": "2603.08859",
+    "title": "Expressivity-Efficiency Tradeoffs for Hybrid Sequence Models"
+  },
+  "tags": [
+    "icml2026-repro",
+    "paper-82EJxJzG6r"
+  ],
+  "updated_at": "2026-07-28T23:45:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Current verification index",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "current",
+        "title": "Current verification",
+        "file": "pages/current/page.md",
+        "children": []
+      },
+      {
+        "slug": "claims",
+        "title": "Claim-by-claim evidence",
+        "file": "pages/claims/page.md",
+        "children": [
+          {
+            "slug": "claim-1",
+            "title": "Claim 1 — FALSIFIED",
+            "file": "pages/claims/claim-1/page.md",
+            "children": []
+          },
+          {
+            "slug": "claim-2",
+            "title": "Claim 2 — VERIFIED",
+            "file": "pages/claims/claim-2/page.md",
+            "children": []
+          },
+          {
+            "slug": "claim-3",
+            "title": "Claim 3 — VERIFIED",
+            "file": "pages/claims/claim-3/page.md",
+            "children": []
+          },
+          {
+            "slug": "claim-4",
+            "title": "Claim 4 — VERIFIED",
+            "file": "pages/claims/claim-4/page.md",
+            "children": []
+          },
+          {
+            "slug": "claim-5",
+            "title": "Claim 5 — FALSIFIED",
+            "file": "pages/claims/claim-5/page.md",
+            "children": []
+          },
+          {
+            "slug": "claim-6",
+            "title": "Claim 6 — FALSIFIED",
+            "file": "pages/claims/claim-6/page.md",
+            "children": []
+          }
+        ]
+      },
+      {
+        "slug": "provenance",
+        "title": "Commands and provenance",
+        "file": "pages/provenance/page.md",
+        "children": []
+      },
+      {
+        "slug": "visibility",
+        "title": "Evaluator visibility matrix",
+        "file": "pages/visibility/page.md",
+        "children": []
+      },
+      {
+        "slug": "release",
+        "title": "Release forecast and gates",
+        "file": "release/release_report.md",
+        "children": []
+      },
+      {
+        "slug": "red-team",
+        "title": "Evaluator-blind review",
+        "file": "pages/red-team/page.md",
+        "children": []
+      },
+      {
+        "slug": "history",
+        "title": "Historical rejected baseline",
+        "file": "pages/history/page.md",
+        "children": [
+          {
+            "slug": "overview",
+            "title": "Historical rejected baseline",
+            "file": "pages/overview/page.md",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "agent_view_tokens": 12000,
+  "revision": "current-six-claim-evidence"
+}

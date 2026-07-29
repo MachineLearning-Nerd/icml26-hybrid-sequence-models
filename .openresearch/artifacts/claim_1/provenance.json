@@ -1,0 +1,22 @@
+{
+  "fixed_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "environment": {
+    "manager": "uv",
+    "python": "3.12",
+    "lockfile": "uv.lock",
+    "frozen": true,
+    "repository_venv": ".venv"
+  },
+  "determinism": {
+    "stochastic": false,
+    "seeds": []
+  },
+  "compute_plan": {
+    "estimated_scientific_cores": 1,
+    "expected_scientific_runtime": "under 5 minutes",
+    "selected_backend": "local",
+    "selected_flavor": "local CPU",
+    "reason": "The verifier exhaustively enumerates at most 4096 payloads and performs no training."
+  },
+  "runtime_capture": "The fixed runner prints Git SHA, visible and affinity CPU allocation, environment, verifier output, and elapsed seconds into the immutable orx run log. The subsequent cumulative child records that completed run id and output as historical evidence."
+}

@@ -1,0 +1,38 @@
+{
+  "claim_id": 6,
+  "confidence": "HIGH",
+  "exact_imported_claim": "On multi-key associative recall, the hybrid model reaches 60% accuracy using 6x fewer parameters than pure Transformers, which plateau near 40% accuracy on single-key associative recall (Figures 5-6).",
+  "source_split": {
+    "figure_6": "Multi-Key Associative Recall: the SSM-to-TF hybrid reaches 60% mean valid-token accuracy with 6x fewer parameters than the pure two-layer Transformer.",
+    "figure_5": "Associative Recall with Decoding: among three-layer models and the tested parameter grid, the hybrid surpasses 0.5 while no pure model surpasses 0.4."
+  },
+  "imported_wording_difference": "Figure 5 is not a single-key associative-recall task; it is associative recall with a five-bit decoded control variable.",
+  "mkar_domain": "The authors' length-100, key-length-2, vocabulary-8 generator; two-layer GPTNeoX/Mamba variants; one causal attention head; full window 100; effective Mamba state size 16; 4,000 AdamW steps.",
+  "mkar_quantifier": "Mean seq-to-seq valid-token accuracy over 11 deterministic final seeds at each point in the paper's hidden-dimension grid, after learning-rate selection on disjoint seeds.",
+  "mkar_verification_condition": "The first hybrid and pure-Transformer grid points whose mean accuracy reaches 0.60 have a pure-to-hybrid parameter ratio consistent with approximately 6, and source-neighborhood results support the separation.",
+  "figure_5_verification_condition": "The imported wording must accurately identify Figure 5, and any empirical Figure 5 assertion requires the paper's complete three-layer decoding-recall scale.",
+  "observed_mkar_first_hits": {
+    "ssm_to_transformer": {
+      "parameters": 3684,
+      "mean_accuracy": 0.6725832353812686,
+      "normal_95_interval_across_seeds": [
+        0.45223850181337377,
+        0.8929279689491635
+      ]
+    },
+    "pure_transformer": {
+      "parameters": 7100,
+      "mean_accuracy": 0.7521704923409668,
+      "normal_95_interval_across_seeds": [
+        0.6827445040563531,
+        0.8215964806255804
+      ]
+    },
+    "pure_to_hybrid_parameter_ratio": 1.9272529858849077
+  },
+  "verdict_basis": "The exact imported composite is contradicted twice: Figure 5 is decoding recall, not single-key associative recall, and a faithful complete Figure 6 rerun yields a 1.927x first-hit ratio rather than 6x. The Figure 6 result uses all 24 architecture-width points, 11 final seeds per point, disjoint learning-rate calibration, instantiated parameter counts, and a random-target control.",
+  "verdict_scope": "This verdict falsifies the exact imported claim under the stated rerun contract. It does not assert that the archived paper plot was fabricated or establish behavior outside the finite grid.",
+  "figure_5_full_scale_status": "Not rerun: the paper's three-layer dimensions 384 and 768 are not defensible within the CPU-only campaign budget. No downscaled Figure 5 proxy is used as full-credit evidence.",
+  "verdict": "FALSIFIED",
+  "blocker": null
+}

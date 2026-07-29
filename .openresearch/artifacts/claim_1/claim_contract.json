@@ -1,0 +1,16 @@
+{
+  "claim_id": 1,
+  "source": "Theorem 3.3 / label th SSM lb general",
+  "exact_imported_claim": "Theorem 3.3 proves that any k-layer state-space model solving the function-composition tasks under injectivity conditions must have total log state-space size scaling as Omega(m log|V| - q log|Y|), linear in the hidden dimension m.",
+  "assumptions": [
+    "F maps V^m x V^n to Y.",
+    "There is Q of size q such that G(u)=(F(u,v^(1)),...,F(u,v^(q))) is injective.",
+    "The theorem's model success threshold is exactly probability 1/2 under an existentially chosen distribution D."
+  ],
+  "tested_component": "linear_in_m_consequence",
+  "pass_condition": "An independently checked derivation or certificate establishes a positive Omega(m) state lower bound at the exact 1/2 threshold.",
+  "falsification_condition": "An assumption-satisfying scalable family shows that no positive linear state lower bound follows at the exact 1/2 threshold.",
+  "verdict": "FALSIFIED",
+  "verdict_scope": "The claimed linear-in-m consequence is falsified. The printed inequality remains formally true only vacuously because its asymptotic argument is non-positive.",
+  "confidence": "HIGH"
+}

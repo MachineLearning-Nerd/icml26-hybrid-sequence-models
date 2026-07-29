@@ -1,0 +1,22 @@
+{
+  "fixed_command": "uv run --frozen --no-dev python scripts/run_reproduction.py",
+  "environment": {
+    "manager": "uv",
+    "python": "3.12",
+    "lockfile": "uv.lock",
+    "frozen": true,
+    "repository_venv": ".venv"
+  },
+  "determinism": {
+    "stochastic": false,
+    "seeds": []
+  },
+  "compute_plan": {
+    "estimated_scientific_cores": 1,
+    "expected_scientific_runtime": "under 5 minutes",
+    "selected_backend": "local",
+    "selected_flavor": "local CPU",
+    "reason": "The proof checker performs small integer, suffix, and exhaustive binary-output checks only."
+  },
+  "runtime_capture": "The fixed runner prints Git SHA, visible and affinity CPU allocation, environment, all cumulative claim outputs, and elapsed seconds into the immutable orx run log."
+}

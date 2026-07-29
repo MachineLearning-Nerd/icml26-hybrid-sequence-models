@@ -1,0 +1,12 @@
+{
+  "control": "zero attention temperature",
+  "sequence": [0, 2, 3, 0],
+  "number_tokens": 2,
+  "control_value": 2,
+  "target_slot_in_window": 0,
+  "expected_token": 3,
+  "predicted_token": 0,
+  "target_attention_weight": 0.5,
+  "correct": false,
+  "returncode": 7
+}

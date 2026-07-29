@@ -1,0 +1,6 @@
+length,vocabulary_size,number_tokens,expected_valid_sequences,expected_undefined_sequences
+4,4,2,240,16
+5,3,1,211,32
+5,4,2,992,32
+6,3,2,728,1
+6,4,3,4095,1

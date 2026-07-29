@@ -1,0 +1,24 @@
+{
+  "family": "binary-coordinate lookup",
+  "parameters": {
+    "payload_length": "m >= 1",
+    "input_vocabulary_size": 4,
+    "output_alphabet_size": 2,
+    "controls": "q = 2m"
+  },
+  "definition": "Encode each of the m symbols of u in two bits. Control v^(i) asks for bit i, and F(u,v^(i)) returns that bit.",
+  "assumption_audit": {
+    "G_definition": "G concatenates all 2m bits",
+    "G_injective": true,
+    "cardinality_lemma": "|Y|^q >= |V|^m"
+  },
+  "cardinality_lemma": "q_log_Y_ge_m_log_V",
+  "printed_rhs": "m log2(4) - 2m log2(2) = 0",
+  "model": {
+    "type": "one-layer SSM with singleton state and a constant binary output",
+    "state_space_size": 1,
+    "log2_state_space_size": 0,
+    "success": "For every distribution D over inputs, choose the more probable output label; success is at least 1/2."
+  },
+  "contradiction": "The imported positive linear-in-m interpretation cannot hold at the exact 1/2 threshold."
+}

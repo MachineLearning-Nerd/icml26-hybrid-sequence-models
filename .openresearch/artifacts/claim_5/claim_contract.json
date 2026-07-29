@@ -1,0 +1,12 @@
+{
+  "claim_id": 5,
+  "exact_imported_claim": "On selective copying, a learned hybrid reaches perfect accuracy with roughly 2,000 parameters while pure Transformer/SSM models need roughly 12,000 parameters to match it, a 6x parameter gap.",
+  "paper_contract": "Figure 4 reports 0.999 for the approximately-2,000-parameter SSM-to-TF hybrid, 0.923 for the approximately-12,000-parameter pure Transformer, and 0.931 for the approximately-12,000-parameter pure SSM; the caption says the pure models attain only around 0.9.",
+  "domain": "The authors' learned two-layer GPTNeoX/Mamba model family on the selective-copy generator: length 100, vocabulary 26, five number tokens, causal window 20, one attention head, AdamW, 100-step warmup, linear decay, and seq-to-seq valid-token accuracy.",
+  "quantifier": "Mean performance across 11 independent final seeds at the paper-neighborhood headline points, after learning-rate selection on disjoint calibration seeds.",
+  "verification_condition": "The imported wording would be supported only if the paper-neighborhood pure-model means match the at-least-0.99 hybrid mean and the independently calibrated finite first-hit parameter ratio is approximately 6.",
+  "falsification_condition": "The source itself and a faithful independent rerun show the approximately-12,000-parameter pure-model means do not match the perfect hybrid, with paired-seed evidence against equality; the exact calibrated first-hit ratios also differ materially from 6.",
+  "verdict": "FALSIFIED",
+  "confidence": "MEDIUM",
+  "paper_result_is_separate": "The paper's actual ordering and its statement that pure models reach around 0.9 are corroborated; FALSIFIED applies to the imported claim's stronger word 'match' and exact 6x wording."
+}

@@ -1,0 +1,16 @@
+{
+  "claim_id": 3,
+  "source": "Theorem 4.3 / label th hybrid copy, with the pure-Transformer comparison from Theorems 3.7 and 4.2",
+  "exact_imported_claim": "Theorem 4.3 constructs a two-layer hybrid (Mamba + attention) model that solves the selective copying task using embedding dimension O(max(log|V|, log L)) and working memory tilde O(N), versus Omega(L) required by pure Transformers.",
+  "domain": "All length-L vocabulary sequences containing at least one number token; the source target is undefined when its argmax set is empty.",
+  "assumptions": [
+    "Number tokens encode distances 1 through N and N <= L.",
+    "The most recent number token is the control distance.",
+    "The output is the token at relative distance equal to that control.",
+    "Token and relative-position codes are distinct +/-1 binary encodings."
+  ],
+  "pass_condition": "A two-layer construction, symbolic resource/correctness certificate, exhaustive complete-domain checks, independent checker, and failing control establish the exact target for every defined input.",
+  "falsification_condition": "A valid input satisfying all source assumptions causes the certified construction or existential resource bounds to fail.",
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM"
+}

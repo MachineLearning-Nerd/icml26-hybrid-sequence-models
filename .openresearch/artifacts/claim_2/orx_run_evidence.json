@@ -1,0 +1,19 @@
+{
+  "run_id": "fa264c3e-0e1b-41cb-a2b1-7dcf343d3b9c",
+  "experiment_id": "9e2473c2-58e0-4bf7-8a82-2820b65f7fc2",
+  "git_sha": "ad7ec170730798cd2f2eee19d5e2346f4a45a0ae",
+  "backend": "local",
+  "status": "done",
+  "end_to_end_runtime_seconds": 5,
+  "verifier_runtime_seconds": 0.772692,
+  "actual_os_cpu_count_visible": 8,
+  "actual_cpu_affinity": null,
+  "scientific_processes": 1,
+  "scientific_core_estimate": 1,
+  "python": "3.12.11",
+  "verdict": "VERIFIED",
+  "confidence": "MEDIUM",
+  "independent_cases": 8,
+  "negative_control_returncode": 5,
+  "cumulative_manifest_control_returncode": 3
+}
