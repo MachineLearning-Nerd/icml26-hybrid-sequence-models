@@ -51,7 +51,7 @@ The tree is a descending sequence of small decision rounds: protected baseline;
 Claims 1–4 theorem/construction nodes; Claim 5 pilot, learned frontier, and
 static replay; Claim 6 first attempt, recycled-worker recovery, and static
 cumulative freeze. The winning branch is
-`orx/claim-6-faithful-decoding-recall-benchmark` at Git SHA
+`release/evaluator-candidate` at Git SHA
 `8ba5e099657cd2b61b3201daa11692736cfb083a`.
 
 Accepted claim results:

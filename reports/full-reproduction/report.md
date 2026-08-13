@@ -193,14 +193,14 @@ Hugging Face `cpu-upgrade`; no GPU was requested.
 
 | Experiment branch | Purpose | Outcome | Compute |
 |---|---|---|---|
-| [historical judged baseline](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/historical-judged-baseline-audit) | Freeze source, live verdict, and judged-Space manifest | PASS; protected score remains 0/12 | Local CPU, 26 s |
-| [Claim 1](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-1-theorem-calibration) | Calibrate Theorem 3.3 quantifiers | FALSIFIED/HIGH | Local CPU, 10 s |
-| [Claim 2](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-2-sliding-window-lower-bound) | Reconstruct W<R witnesses | VERIFIED/MEDIUM | Local CPU, 5 s |
-| [Claim 3](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-3-selective-copying-construction) | Exhaustive selective-copy construction | VERIFIED/MEDIUM | Local CPU, 5 s |
-| [Claim 4](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-4-associative-recall-construction) | Exact 99% recall calibration | VERIFIED/MEDIUM | Local CPU, 5 s |
-| [Claim 5 frontier](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-5-selective-copy-parameter-frontier) | Faithful learned selective-copy sweep | FALSIFIED/MEDIUM | HF cpu-upgrade, 8 one-thread workers, 6,183.51 s |
-| [Claim 6 recovery](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-6-mkar-recycled-worker-recovery) | Complete learned Figure 6 grid | Scientific PASS | HF cpu-upgrade, 6 one-thread workers, 14,432.20 s |
-| [cumulative winner](https://github.com/MachineLearning-Nerd/icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models/tree/orx/claim-6-faithful-decoding-recall-benchmark) | Freeze Claim 6 and rerun Claims 1–6 | PASS; Claim 6 FALSIFIED/HIGH | Local CPU, 30 s |
+| [historical judged baseline](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/historical/judged-baseline) | Freeze source, live verdict, and judged-Space manifest | PASS; protected score remains 0/12 | Local CPU, 26 s |
+| [Claim 1](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/audit/claim1-theorem-calibration) | Calibrate Theorem 3.3 quantifiers | FALSIFIED/HIGH | Local CPU, 10 s |
+| [Claim 2](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/audit/claim2-sliding-window-lower-bound) | Reconstruct W<R witnesses | VERIFIED/MEDIUM | Local CPU, 5 s |
+| [Claim 3](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/audit/claim3-selective-copying) | Exhaustive selective-copy construction | VERIFIED/MEDIUM | Local CPU, 5 s |
+| [Claim 4](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/audit/claim4-associative-recall) | Exact 99% recall calibration | VERIFIED/MEDIUM | Local CPU, 5 s |
+| [Claim 5 frontier](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/audit/claim5-selective-copy-frontier) | Faithful learned selective-copy sweep | FALSIFIED/MEDIUM | HF cpu-upgrade, 8 one-thread workers, 6,183.51 s |
+| [Claim 6 recovery](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/audit/claim6-mkar-worker-recovery) | Complete learned Figure 6 grid | Scientific PASS | HF cpu-upgrade, 6 one-thread workers, 14,432.20 s |
+| [cumulative winner](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models/tree/release/evaluator-candidate) | Freeze Claim 6 and rerun Claims 1–6 | PASS; Claim 6 FALSIFIED/HIGH | Local CPU, 30 s |
 
 The HF provider's monetary charge is not exposed by `orx`; no cost is
 invented. Recorded accepted HF scientific runtime totals 20,615.71 CPU-wall
