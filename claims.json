@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "paper": {
+    "title": "Expressivity-Efficiency Tradeoffs for Hybrid Sequence Models",
+    "arxiv": "2603.08859",
+    "source_version": "ArXiv HTML and e-print retrieved 2026-07-28",
+    "authors": [
+      "John Cooper",
+      "Ilias Diakonikolas",
+      "Mingchen Ma",
+      "Frederic Sala"
+    ],
+    "source_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+    "eprint_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+  },
+  "overall_status": "PARTIAL_C2_C4_VERIFIED_C1_C5_C6_FALSIFIED_HISTORICAL_SCORE_0_OF_12_NO_CURRENT_SCORE",
+  "claims": [
+    {
+      "id": "C1",
+      "name": "theorem_3_3_state_lower_bound",
+      "status": "FALSIFIED_SCOPED",
+      "confidence": "HIGH",
+      "paper_anchor": "Theorem 3.3 and Appendix proof",
+      "imported_claim": "Theorem 3.3 yields a positive lower bound linear in hidden dimension m.",
+      "production": [
+        ".openresearch/artifacts/claim_1/claim_contract.json",
+        ".openresearch/artifacts/claim_1/checker_output.json",
+        ".openresearch/artifacts/claim_1/raw/cardinality_grid.csv",
+        ".openresearch/artifacts/claim_1/raw/counterexample_family.json",
+        ".openresearch/artifacts/claim_1/source_audit.md"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_1/negative_control_output.json",
+        "injectivity/cardinality consistency and constant-state binary-output control"
+      ],
+      "scope": "Falsifies the imported positive linear consequence; it does not claim that every displayed inequality in the source is false.",
+      "metrics": {
+        "checker_m": 4,
+        "checker_vocabulary_size": 4,
+        "checker_output_size": 2,
+        "checker_q": 8,
+        "printed_rhs_bits": 0.0,
+        "best_uniform_constant_success": 0.5
+      }
+    },
+    {
+      "id": "C2",
+      "name": "theorem_3_7_sliding_window_lower_bound",
+      "status": "VERIFIED_SCOPED",
+      "confidence": "MEDIUM",
+      "paper_anchor": "Theorem 3.7 and Appendix proof",
+      "imported_claim": "A sliding-window Transformer needs total window size at least the dependency range R.",
+      "production": [
+        ".openresearch/artifacts/claim_2/claim_contract.json",
+        ".openresearch/artifacts/claim_2/checker_output.json",
+        ".openresearch/artifacts/claim_2/raw/witness_grid.csv",
+        ".openresearch/artifacts/claim_2/source_audit.md"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_2/negative_control_output.json"
+      ],
+      "scope": "Finite witness family under the source’s suffix-indistinguishability assumption.",
+      "metrics": {
+        "length": 17,
+        "dependency_range": 8,
+        "total_window": 7,
+        "max_accuracy_on_uniform_pair": 0.5,
+        "target_threshold": 0.6666666666666666
+      }
+    },
+    {
+      "id": "C3",
+      "name": "theorem_4_3_selective_copy_construction",
+      "status": "VERIFIED_SCOPED",
+      "confidence": "MEDIUM",
+      "paper_anchor": "Theorem 4.3 and Appendix constructions",
+      "imported_claim": "A two-layer Mamba-plus-attention hybrid solves selective copying with logarithmic embedding and O(N) attention window.",
+      "production": [
+        ".openresearch/artifacts/claim_3/claim_contract.json",
+        ".openresearch/artifacts/claim_3/checker_output.json",
+        ".openresearch/artifacts/claim_3/raw/complete_domain_sweep.csv",
+        ".openresearch/artifacts/claim_3/raw/construction_spec.json",
+        ".openresearch/artifacts/claim_3/raw/pure_transformer_witness.json",
+        ".openresearch/artifacts/claim_3/source_audit.md"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_3/negative_control_output.json"
+      ],
+      "scope": "Corrected finite-temperature certificate and complete finite checks over defined inputs.",
+      "metrics": {
+        "complete_domains": 5,
+        "defined_inputs": 6266,
+        "correct_defined_inputs": 6266,
+        "undefined_no_number_inputs": 82,
+        "checker_embedding_dimension": 9,
+        "checker_attention_window": 2,
+        "checker_reachable_mamba_states": 3
+      }
+    },
+    {
+      "id": "C4",
+      "name": "theorem_4_6_associative_recall_construction",
+      "status": "VERIFIED_SCOPED",
+      "confidence": "MEDIUM",
+      "paper_anchor": "Theorem 4.6 and Appendix constructions",
+      "imported_claim": "A three-layer hybrid reaches 99% decoded associative recall with logarithmic embedding and near-linear window.",
+      "production": [
+        ".openresearch/artifacts/claim_4/claim_contract.json",
+        ".openresearch/artifacts/claim_4/checker_output.json",
+        ".openresearch/artifacts/claim_4/raw/window_calibration_spec.csv",
+        ".openresearch/artifacts/claim_4/raw/construction_spec.json",
+        ".openresearch/artifacts/claim_4/source_audit.md"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_4/negative_control_output.json"
+      ],
+      "scope": "Exact finite probability calibration and construction check, with absent-query cases counted as failures.",
+      "metrics": {
+        "minimum_context_window": 7,
+        "previous_window": 6,
+        "success_probability": 0.9921875,
+        "previous_success_probability": 0.984375,
+        "direct_cases": 256,
+        "direct_correct_when_defined": 254,
+        "attention_window": 9
+      }
+    },
+    {
+      "id": "C5",
+      "name": "figure_4_selective_copy_parameter_gap",
+      "status": "FALSIFIED_SCOPED",
+      "confidence": "MEDIUM",
+      "paper_anchor": "Figure 4, selective-copy table, and Appendix E.1",
+      "imported_claim": "A roughly 2,000-parameter hybrid matches roughly 12,000-parameter pure models, implying a 6x gap.",
+      "production": [
+        ".openresearch/artifacts/claim_5/claim_contract.json",
+        ".openresearch/artifacts/claim_5/checker_output.json",
+        ".openresearch/artifacts/claim_5/raw/frontier_results.json",
+        ".openresearch/artifacts/claim_5/static_replay_output.txt",
+        ".openresearch/artifacts/claim_5/source_audit.md"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_5/negative_control_output.json",
+        "random-target accuracy control",
+        "paired-seed comparisons"
+      ],
+      "scope": "Source and calibrated finite evidence falsify the stronger imported wording; the strict finite-to-asymptotic route remains BLOCKED.",
+      "metrics": {
+        "source_hybrid": 0.999,
+        "source_pure_transformer": 0.923,
+        "source_pure_ssm": 0.931,
+        "rerun_hybrid_mean": 0.9999850478972632,
+        "rerun_pure_transformer_mean": 0.8462711462820027,
+        "rerun_pure_ssm_mean": 0.86649306454689,
+        "pure_transformer_first_hit_ratio": 8.321167883211679,
+        "pure_ssm_first_hit_ratio": 9.605839416058394,
+        "final_seed_count": 11
+      }
+    },
+    {
+      "id": "C6",
+      "name": "figures_5_6_multi_key_parameter_gap",
+      "status": "FALSIFIED_SCOPED",
+      "confidence": "HIGH",
+      "paper_anchor": "Figures 5–6 and Appendix E.1",
+      "imported_claim": "The hybrid reaches 60% multi-key recall with 6x fewer parameters and Figure 5 shows a single-key plateau.",
+      "production": [
+        ".openresearch/artifacts/claim_6/claim_contract.json",
+        ".openresearch/artifacts/claim_6/checker_output.json",
+        ".openresearch/artifacts/claim_6/raw/figure6_full_evidence.json",
+        ".openresearch/artifacts/claim_6/source_audit.md"
+      ],
+      "controls": [
+        ".openresearch/artifacts/claim_6/negative_control_output.json",
+        "random-target control"
+      ],
+      "scope": "Falsifies the exact imported composite on the complete finite Figure 6 grid; Figure 5 full widths 384 and 768 remain unrun.",
+      "metrics": {
+        "figure_6_architecture_width_points": 24,
+        "final_seeds_per_point": 11,
+        "hybrid_first_hit_parameters": 3684,
+        "pure_transformer_first_hit_parameters": 7100,
+        "observed_parameter_ratio": 1.9272529858849077,
+        "paper_parameter_ratio": 6.0,
+        "random_target_accuracy": 0.0
+      }
+    }
+  ]
+}
+

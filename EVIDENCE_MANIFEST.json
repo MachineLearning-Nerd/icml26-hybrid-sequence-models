@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "manifest_type": "claim_audit_release",
+  "source": {
+    "arxiv": "2603.08859",
+    "source_version": "ArXiv HTML and e-print retrieved 2026-07-28",
+    "html_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+    "eprint_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+  },
+  "required_paths": [
+    "README.md",
+    "STATUS.md",
+    "CLAIM_EVIDENCE.md",
+    "SOURCE_AUDIT.md",
+    "ENVIRONMENT.md",
+    "REPORT.md",
+    "branch-audit.md",
+    "AUTHOR_THANK_YOU.md",
+    "CITATION.cff",
+    "claims.json",
+    "reproduction_verdicts.json",
+    "AUTONOMOUS_STATE.json",
+    "verify_final.py",
+    ".python-version",
+    "pyproject.toml",
+    "uv.lock",
+    "scripts/run_reproduction.py",
+    "reproduction/campaign.json",
+    "reproduction/claim1_verifier.py",
+    "reproduction/claim2_verifier.py",
+    "reproduction/claim3_verifier.py",
+    "reproduction/claim4_verifier.py",
+    "reproduction/claim5_verifier.py",
+    "reproduction/claim6_verifier.py",
+    "space/logbook.json",
+    "space/pages/index.md",
+    "space/pages/current/page.md",
+    "space/pages/claims/page.md",
+    "space/pages/claims/claim-1/page.md",
+    "space/pages/claims/claim-2/page.md",
+    "space/pages/claims/claim-3/page.md",
+    "space/pages/claims/claim-4/page.md",
+    "space/pages/claims/claim-5/page.md",
+    "space/pages/claims/claim-6/page.md",
+    "space/pages/provenance/page.md",
+    "space/pages/visibility/page.md",
+    "space/pages/red-team/page.md",
+    "space/release/final_candidate_audit.json",
+    "space/release/historical_preservation.json",
+    "space/release/release_report.md",
+    "space/release/candidate_manifest.sha256",
+    "space/historical/judged_revision/README.md",
+    "space/historical/judged_revision/logbook.json",
+    ".openresearch/artifacts/project/source_audit.md",
+    ".openresearch/artifacts/project/verdict_record.json",
+    ".openresearch/artifacts/claim_1",
+    ".openresearch/artifacts/claim_2",
+    ".openresearch/artifacts/claim_3",
+    ".openresearch/artifacts/claim_4",
+    ".openresearch/artifacts/claim_5",
+    ".openresearch/artifacts/claim_6"
+  ],
+  "claim_evidence": {
+    "C1": [
+      ".openresearch/artifacts/claim_1/claim_contract.json",
+      ".openresearch/artifacts/claim_1/checker_output.json",
+      ".openresearch/artifacts/claim_1/negative_control_output.json",
+      ".openresearch/artifacts/claim_1/raw/cardinality_grid.csv",
+      ".openresearch/artifacts/claim_1/raw/counterexample_family.json"
+    ],
+    "C2": [
+      ".openresearch/artifacts/claim_2/claim_contract.json",
+      ".openresearch/artifacts/claim_2/checker_output.json",
+      ".openresearch/artifacts/claim_2/negative_control_output.json",
+      ".openresearch/artifacts/claim_2/raw/witness_grid.csv"
+    ],
+    "C3": [
+      ".openresearch/artifacts/claim_3/claim_contract.json",
+      ".openresearch/artifacts/claim_3/checker_output.json",
+      ".openresearch/artifacts/claim_3/negative_control_output.json",
+      ".openresearch/artifacts/claim_3/raw/complete_domain_sweep.csv",
+      ".openresearch/artifacts/claim_3/raw/construction_spec.json"
+    ],
+    "C4": [
+      ".openresearch/artifacts/claim_4/claim_contract.json",
+      ".openresearch/artifacts/claim_4/checker_output.json",
+      ".openresearch/artifacts/claim_4/negative_control_output.json",
+      ".openresearch/artifacts/claim_4/raw/window_calibration_spec.csv",
+      ".openresearch/artifacts/claim_4/raw/construction_spec.json"
+    ],
+    "C5": [
+      ".openresearch/artifacts/claim_5/claim_contract.json",
+      ".openresearch/artifacts/claim_5/checker_output.json",
+      ".openresearch/artifacts/claim_5/negative_control_output.json",
+      ".openresearch/artifacts/claim_5/raw/frontier_results.json",
+      ".openresearch/artifacts/claim_5/static_replay_output.txt"
+    ],
+    "C6": [
+      ".openresearch/artifacts/claim_6/claim_contract.json",
+      ".openresearch/artifacts/claim_6/checker_output.json",
+      ".openresearch/artifacts/claim_6/negative_control_output.json",
+      ".openresearch/artifacts/claim_6/raw/figure6_full_evidence.json"
+    ]
+  },
+  "controls": {
+    "source_pinned": true,
+    "positive_and_negative_routes_recorded": true,
+    "historical_space_preserved": true,
+    "gpu_required_for_final_static_verifier": false,
+    "current_score_claim": false,
+    "author_endorsement_claimed": false
+  }
+}
+

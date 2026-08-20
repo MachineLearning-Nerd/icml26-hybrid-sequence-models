@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "paper": "2603.08859",
+  "source_scope": "Pinned arXiv source, claim contracts, symbolic certificates, complete finite domains, and paper-anchored CPU experiments",
+  "source_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+  "overall_verdict": "PARTIAL_C2_C4_VERIFIED_C1_C5_C6_FALSIFIED",
+  "claim_statuses": {
+    "C1": "FALSIFIED_SCOPED",
+    "C2": "VERIFIED_SCOPED",
+    "C3": "VERIFIED_SCOPED",
+    "C4": "VERIFIED_SCOPED",
+    "C5": "FALSIFIED_SCOPED",
+    "C6": "FALSIFIED_SCOPED"
+  },
+  "evidence": {
+    "c1_printed_rhs_bits": 0.0,
+    "c1_constant_state_success": 0.5,
+    "c2_total_window": 7,
+    "c2_dependency_range": 8,
+    "c2_max_accuracy": 0.5,
+    "c3_defined_inputs": 6266,
+    "c3_correct_defined_inputs": 6266,
+    "c4_minimum_context_window": 7,
+    "c4_success_probability": 0.9921875,
+    "c5_hybrid_mean": 0.9999850478972632,
+    "c5_pure_transformer_mean": 0.8462711462820027,
+    "c5_pure_ssm_mean": 0.86649306454689,
+    "c5_pure_transformer_ratio": 8.321167883211679,
+    "c5_pure_ssm_ratio": 9.605839416058394,
+    "c6_hybrid_parameters": 3684,
+    "c6_pure_transformer_parameters": 7100,
+    "c6_observed_ratio": 1.9272529858849077,
+    "c6_random_target_accuracy": 0.0
+  },
+  "historical_external_result": {
+    "live_judge_score": "0/12",
+    "judged_at": "2026-07-28T14:30:09+00:00",
+    "candidate_space": "DineshAI/82EJxJzG6r",
+    "current_score_claim": false
+  },
+  "publication": {
+    "publication_allowed": false,
+    "author_endorsement_claimed": false
+  },
+  "boundary": "C1, C5, and C6 reject exact imported contracts under scoped evidence. C2–C4 support their stated finite or construction routes. No current judge score or author endorsement is claimed."
+}
+

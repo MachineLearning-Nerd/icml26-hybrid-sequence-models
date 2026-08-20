@@ -14,6 +14,12 @@ The six evaluator-selected claims have terminal, evidence-backed verdicts: Claim
 
 The strongest empirical divergence is Figure 6: the complete 24-point grid reaches 60% mean multi-key recall at 3,684 parameters for SSM→Transformer and 7,100 for pure Transformer, a **1.927×** ratio rather than the imported 6×. Figure 5's full three-layer widths 384 and 768 were not rerun on CPU; no downscaled proxy is presented as full-scale evidence.
 
+The compact status and audit entry points are [STATUS.md](STATUS.md),
+[CLAIM_EVIDENCE.md](CLAIM_EVIDENCE.md), [SOURCE_AUDIT.md](SOURCE_AUDIT.md),
+[ENVIRONMENT.md](ENVIRONMENT.md), and [REPORT.md](REPORT.md). The historical
+0/12 evaluator result is preserved separately from the current local evidence;
+this repository makes no current score or author-endorsement claim.
+
 ## Claim and evidence ledger
 
 | Claim | Paper/imported result | Reproduction assessment | How the result is produced |
@@ -108,4 +114,4 @@ Thank you to John Cooper, Ilias Diakonikolas, Mingchen Ma, and Frederic Sala for
 
 ## Attribution and scope
 
-The repository is maintained by [MachineLearning-Nerd](https://github.com/MachineLearning-Nerd). Commits in the normalized history use the `MachineLearning-Nerd` GitHub identity. The original repository slug was `icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models`; it was renamed to `icml26-hybrid-sequence-models`. The evaluator's historical [DineshAI/82EJxJzG6r Space](https://huggingface.co/spaces/DineshAI/82EJxJzG6r) remains referenced by the protected release metadata and is intentionally not renamed by this GitHub cleanup.
+The repository is maintained by [MachineLearning-Nerd](https://github.com/MachineLearning-Nerd). The normalized commit identity is `MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>`. The original repository slug was `icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models`; it was renamed to `icml26-hybrid-sequence-models`. The evaluator's historical [DineshAI/82EJxJzG6r Space](https://huggingface.co/spaces/DineshAI/82EJxJzG6r) remains referenced by the protected release metadata and is intentionally not renamed by this GitHub cleanup.

@@ -23,7 +23,7 @@ This repository was migrated from opaque OpenResearch-generated branch names to 
 
 - All former `orx/*` remote branches were deleted after their clean replacements were pushed.
 - Every live branch contains this file and the claim-focused README.
-- Branch tips and historical commits were normalized to `MachineLearning-Nerd <37579156+MachineLearning-Nerd@users.noreply.github.com>`.
+- Branch tips and historical commits are normalized to `MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>`.
 - The renamed repository is [`MachineLearning-Nerd/icml26-hybrid-sequence-models`](https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models).
 - The historical Hugging Face Space identifier `DineshAI/82EJxJzG6r` is intentionally retained in evaluator metadata; it is not a GitHub username or branch name.
 
@@ -38,4 +38,4 @@ git show "<branch>:branch-audit.md" >/dev/null
 git log "<branch>" --format='%an <%ae>' | sort -u
 ```
 
-The expected identity is `MachineLearning-Nerd <37579156+MachineLearning-Nerd@users.noreply.github.com>`. Scientific status comes from the claim contracts and evidence pages, not from branch names alone.
+The expected identity is `MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>`. Scientific status comes from the claim contracts and evidence pages, not from branch names alone.

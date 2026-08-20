@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "paper": "Expressivity-Efficiency Tradeoffs for Hybrid Sequence Models",
+  "arxiv": "2603.08859",
+  "phase": "standardized_claim_audit_publication",
+  "overall_status": "PARTIAL_C2_C4_VERIFIED_C1_C5_C6_FALSIFIED_HISTORICAL_SCORE_0_OF_12_NO_CURRENT_SCORE",
+  "next_action": "Retain the mixed claim evidence package and wait for a fresh external evaluation; do not claim a new score from local evidence.",
+  "current_score_claim": false,
+  "publication_allowed": false,
+  "author_endorsement_claimed": false,
+  "claim_statuses": {
+    "C1": "FALSIFIED_SCOPED",
+    "C2": "VERIFIED_SCOPED",
+    "C3": "VERIFIED_SCOPED",
+    "C4": "VERIFIED_SCOPED",
+    "C5": "FALSIFIED_SCOPED",
+    "C6": "FALSIFIED_SCOPED"
+  },
+  "source": {
+    "version": "ArXiv HTML and e-print retrieved 2026-07-28",
+    "html_sha256": "e35eacd382bd4acf7e4d8547927c398570cbd3ba2a5c2618b0e7e18edae444ad",
+    "eprint_sha256": "e8d22bfd259aaa60385841d8643109ecb66f7eb1081dd76429f5215f05a032e8"
+  },
+  "repository": {
+    "owner": "MachineLearning-Nerd",
+    "canonical_email": "MachineLearning-Nerd@users.noreply.github.com",
+    "github": "https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models",
+    "old_slug": "icml26-repro-82EJxJzG6r-expressivity-efficiency-tradeoffs-for-hybrid-sequence-models",
+    "branches": 12,
+    "expected_reachable_commits": 30,
+    "pre_normalization_head": "6b7d29a868a16326ebb6ff376f599edcd29e5b46",
+    "recovery_bundle_sha256": "b778308e142f0880f7f4d1c2b15db458ffc9d8fb5440955000062086c76e8e93"
+  },
+  "historical_external_result": {
+    "live_judge_score": "0/12",
+    "candidate_space": "DineshAI/82EJxJzG6r",
+    "judged_at": "2026-07-28T14:30:09+00:00"
+  }
+}

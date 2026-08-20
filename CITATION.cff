@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this audit, cite the original paper and this repository."
+type: software
+title: "Independent audit of Expressivity-Efficiency Tradeoffs for Hybrid Sequence Models"
+version: "1.0.0"
+date-released: 2026-08-20
+authors:
+  - name: MachineLearning-Nerd
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models"
+url: "https://github.com/MachineLearning-Nerd/icml26-hybrid-sequence-models"
+abstract: "Scoped claim-by-claim audit of hybrid sequence-model expressivity, selective copying, associative recall, and parameter-efficiency claims."
+keywords:
+  - hybrid sequence models
+  - state space models
+  - Transformers
+  - selective copying
+  - associative recall
+  - reproduction
+preferred-citation:
+  type: article
+  title: "Expressivity-Efficiency Tradeoffs for Hybrid Sequence Models"
+  authors:
+    - family-names: Cooper
+      given-names: John
+    - family-names: Diakonikolas
+      given-names: Ilias
+    - family-names: Ma
+      given-names: Mingchen
+    - family-names: Sala
+      given-names: Frederic
+  year: 2026
+  url: "https://arxiv.org/abs/2603.08859"
